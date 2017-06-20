@@ -1,0 +1,27 @@
+html{
+	background-color: #87CEEB;
+}
+
+nav{
+	background-color: #00BFFF;
+}
+
+.form-login{
+	height: 450px;
+	width: 450px;
+	border-radius: 10px;
+	margin: 0 auto;
+	
+	background-color: #E0FFFF;
+	
+}
+
+.form-cadastro{
+	height: 550px;
+	width: 450px;
+	border-radius: 10px;
+	margin: 0 auto;
+	
+	background-color: #E0FFFF;
+	
+}
