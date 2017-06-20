@@ -5,7 +5,10 @@ html{
 nav{
 	background-color: #00BFFF;
 }
-
+#x{
+	height: 800px;
+	width: 450px;
+}
 .form-login{
 	height: 450px;
 	width: 450px;
@@ -17,8 +20,8 @@ nav{
 }
 
 .form-cadastro{
-	height: 550px;
-	width: 450px;
+	height: 500px;
+	width: 420px;
 	border-radius: 10px;
 	margin: 0 auto;
 	
