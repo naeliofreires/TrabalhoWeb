@@ -1,30 +1,11 @@
 html{
-	background-color: #87CEEB;
+	background-color: #F8F8FF;
 }
 
 nav{
-	background-color: #00BFFF;
-}
-#x{
-	height: 800px;
-	width: 450px;
-}
-.form-login{
-	height: 450px;
-	width: 450px;
-	border-radius: 10px;
-	margin: 0 auto;
-	
-	background-color: #E0FFFF;
-	
+	background-color: #FF0000;
 }
 
-.form-cadastro{
-	height: 500px;
-	width: 420px;
-	border-radius: 10px;
-	margin: 0 auto;
-	
-	background-color: #E0FFFF;
-	
+.form-modal{
+	  background-image: url("img/logo.png");
 }

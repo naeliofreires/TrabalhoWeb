@@ -22,7 +22,7 @@
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo right">iSeries</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
-				<li><a href="/">login</a></li>
+				
 			</ul>
 		</div>
 	</nav>

@@ -29,7 +29,6 @@
 	</nav>
 
 	<hr> <br>
-		
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -64,55 +63,71 @@
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
-	
 	<!-- -------------------------------------------------------------------------------- -->
+
+	<h5> <a id="button-add-series" href="#" >adicionar</a> </h5>
+        
+	<div id="form-serie" class="container">
+		<form action="cadastraSerie" method="POST">
+			<div class="container">
+			
+				<i class="material-icons">movie</i>
+				<div class="input-field col s12">
+					<input id="nome" name="nome" type="text"> 
+					<label for="nome" class="center-align">Nome da Serie</label>
+				</div>
+				
+				<i class="material-icons">description</i>
+				<div class="input-field col s12">
+					<input id="sinopse" name="sinopse" type="text"> 
+					<label for="sinopse" class="center-align">Sinopse</label>
+				</div>
+				
+				<i class="material-icons">today</i>
+				<div class="input-field col s12">
+					<input id="ano" name="ano" type="text" maxlength="4"> 
+					<label for="ano" class="center-align">Ano de Lançamento</label>
+				</div>
+				
+				<i class="material-icons">change_history</i>
+				<div class="input-field col s12">
+					<input id="genero" name="genero" type="text" maxlength="8"> 
+					<label for="genero" class="center-align">Genero</label>
+				</div>
+				
+			</div>
+		</form>
+		<hr>
+	</div>
+	<!-- -------------------------------------------------------------------------------- -->
+	
 	<div class="container">
 
 		<table class="striped">
 			<thead>
 				<tr>
-					<th>id</th>
-					<th>nome</th>
-					<th>genero</th>
+					<th>NOME</th>
+					<th>GENERO</th>
+					<th>ANO/LANÇAMENTO</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="serie" items="${lista_series}">
 					<tr>
-						<td>${serie.id}</td>
 						<td>${serie.nome}</td>
 						<td>${serie.genero}</td>
+						<td>${serie.ano}
+						<!-- Vou passar duas listas aqui uma de series, e suas temporadas -->
+						<td><a href="" class="brand-logo">Visualizar</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	<!-- -------------------------------------------------------------------------------- -->
-	<div class="container">
-
-		<table class="striped">
-			<thead>
-				<tr>
-					<th>id - Temporada</th>
-					<th>sinopse - Temporada </th>
-					<th>idSerie - Temporada</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="temporada" items="${lista_temporadas}">
-					<tr>
-						<td>${temporada.id}</td>
-						<td>${temporada.sinopse}</td>
-						<td>${temporada.serie.id}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/js/materialize.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/js/materialize.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/script.js"/>"></script>
 
 </body>

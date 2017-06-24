@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import iseries.model.Serie;
-import iseries.model.Temporada;
 import iseries.model.Usuario;
 import iseries.repository.SerieRepository;
 import iseries.repository.TemporadaRepository;
@@ -46,10 +45,8 @@ public class AdministradorController {
 		
 		List<Serie> series = serieRepo.findAll();
 		
-		List<Temporada> temporadas = this.tempoRepo.findTemporadaOfSerie(1);
-		
 		model.addAttribute("lista_series", series);
-		model.addAttribute("lista_temporadas", temporadas);
+		
 		
 		return "/adm/lista-series";
 	}
