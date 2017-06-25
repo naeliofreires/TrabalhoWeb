@@ -24,6 +24,10 @@
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
 						class="material-icons">menu</i></a></li>
+				<li>
+					<!-- Modal Add Serie -->
+					<a href="#modal1">Add Series</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -63,66 +67,74 @@
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
-	<!-- -------------------------------------------------------------------------------- -->
-
-	<h5> <a id="button-add-series" href="#" >adicionar</a> </h5>
-        
-	<div id="form-serie" class="container">
-		<form action="cadastraSerie" method="POST">
-			<div class="container">
-			
-				<i class="material-icons">movie</i>
-				<div class="input-field col s12">
-					<input id="nome" name="nome" type="text"> 
-					<label for="nome" class="center-align">Nome da Serie</label>
-				</div>
-				
-				<i class="material-icons">description</i>
-				<div class="input-field col s12">
-					<input id="sinopse" name="sinopse" type="text"> 
-					<label for="sinopse" class="center-align">Sinopse</label>
-				</div>
-				
-				<i class="material-icons">today</i>
-				<div class="input-field col s12">
-					<input id="ano" name="ano" type="text" maxlength="4"> 
-					<label for="ano" class="center-align">Ano de Lançamento</label>
-				</div>
-				
-				<i class="material-icons">change_history</i>
-				<div class="input-field col s12">
-					<input id="genero" name="genero" type="text" maxlength="8"> 
-					<label for="genero" class="center-align">Genero</label>
-				</div>
-				
-			</div>
-		</form>
-		<hr>
-	</div>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	
-	<div class="container">
+	<!-- Modal Add Serie -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<p style="text-align: center">
+				<img width="50" height="50" src="img/logo.png" alt=""
+					class="responsive-img"> <br> Add Serie
+			</p>
+			<form action="cadastraSerie" method="POST">
+				<div class="container">
 
-		<table class="striped">
-			<thead>
-				<tr>
-					<th>NOME</th>
-					<th>GENERO</th>
-					<th>ANO/LANÇAMENTO</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="serie" items="${lista_series}">
-					<tr>
-						<td>${serie.nome}</td>
-						<td>${serie.genero}</td>
-						<td>${serie.ano}
-						<!-- Vou passar duas listas aqui uma de series, e suas temporadas -->
-						<td><a href="" class="brand-logo">Visualizar</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+					<i class="material-icons">movie</i>
+					<div class="input-field col s12">
+						<input id="nome" name="nome" type="text"> <label
+							for="nome" class="center-align">Nome da Serie</label>
+					</div>
+
+					<i class="material-icons">description</i>
+					<div class="input-field col s12">
+						<input id="sinopse" name="sinopse" type="text"> <label
+							for="sinopse" class="center-align">Sinopse</label>
+					</div>
+
+					<i class="material-icons">today</i>
+					<div class="input-field col s12">
+						<input id="ano" name="ano" type="text" maxlength="4"> <label
+							for="ano" class="center-align">Ano de Lançamento</label>
+					</div>
+
+					<i class="material-icons">change_history</i>
+					<div class="input-field col s12">
+						<input id="genero" name="genero" type="text" maxlength="8">
+						<label for="genero" class="center-align">Genero</label>
+					</div>
+					
+					<div class="row">
+						<div class="input-field">
+							<button class="btn waves-effect waves-light col s12">Register</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+	<!-- -------------------------------------------------------------------------------- -->
+		
+	<div class="row container">
+		<c:forEach var="serie" items="${lista_series}">
+		<div class="col s3 container">
+			<div class="card">
+				<div class="card-image">
+					<img width="100" height="100" src="img/cinema2.jpg"> 
+					<span class="card-title">${serie.nome}</span>
+				</div>
+				<div class="card-content">
+					<label>Genero: ${serie.genero}</label> <br> 
+					<label>Ano de Lançamento: ${serie.ano}</label>
+				</div>
+				<div class="card-action">
+					<a href="viewSerie?id=${serie.id}">View more</a>
+				</div>
+			</div>
+		</div>
+		</c:forEach>
 	</div>
 	
 	<!-- -------------------------------------------------------------------------------- -->
