@@ -3,6 +3,7 @@ package iseries.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,17 @@ public class Serie {
 	private String sinopse;
 	@NotNull
 	private String ano;
+	@Column(name="PATH")
+	private String path;
 	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	// serie tem várias temporadas
 	@OneToMany
 	(mappedBy = "serie", targetEntity = Temporada.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -48,13 +59,9 @@ public class Serie {
 		this.temporadas = temporadas;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;

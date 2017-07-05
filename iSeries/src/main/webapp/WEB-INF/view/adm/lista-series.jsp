@@ -77,7 +77,7 @@
 				<img width="50" height="50" src="img/logo.png" alt=""
 					class="responsive-img"> <br> Add Serie
 			</p>
-			<form action="cadastraSerie" method="POST">
+			<form action="cadastraSerie" method="POST" enctype="multipart/form-data">
 				<div class="container">
 
 					<i class="material-icons">movie</i>
@@ -104,6 +104,17 @@
 						<label for="genero" class="center-align">Genero</label>
 					</div>
 					
+					<!-- File Imagem -->
+					<div class="file-field input-field" align="right">
+				    	<div class="btn">
+				        	<span>Imagem</span>
+				        	<input name="imagem" type="file">
+				      	</div>
+				      	<div class="file-path-wrapper">
+				        	<input class="file-path validate" type="text">
+				    	</div>
+	    			</div>
+	    			
 					<div class="row">
 						<div class="input-field">
 							<button class="btn waves-effect waves-light col s12">Register</button>
@@ -122,7 +133,7 @@
 		<div class="col s3 container">
 			<div class="card">
 				<div class="card-image">
-					<img width="100" height="100" src="img/cinema2.jpg"> 
+					<img width="100" height="100" src="resources/img/noticias/${serie.path}"> 
 					<span class="card-title">${serie.nome}</span>
 				</div>
 				<div class="card-content">
