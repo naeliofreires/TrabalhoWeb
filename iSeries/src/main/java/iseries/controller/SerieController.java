@@ -48,6 +48,6 @@ public class SerieController {
 		
 		model.addAttribute("serie", serie);
 		
-		return "/adm/edit-serie";
+		return "/user/visualizar-serie";
 	}
 }

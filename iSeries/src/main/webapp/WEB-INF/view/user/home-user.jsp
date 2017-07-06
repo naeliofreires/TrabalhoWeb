@@ -44,9 +44,9 @@
 				<br><br>
 				
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.login}
+					<span style="padding-left: 30px;"></span> ${usuario.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.email}
+					<span style="padding-left: 30px;"></span> ${usuario.email}
 				</a>
 			</div>
 		</li>

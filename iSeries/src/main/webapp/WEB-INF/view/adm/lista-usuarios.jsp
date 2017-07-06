@@ -42,9 +42,9 @@
 				<br>
 				<br>
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.login}
+					<span style="padding-left: 30px;"></span> ${usuario.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.email}
+					<span style="padding-left: 30px;"></span> ${usuario.email}
 				</a>
 			</div>
 		</li>
@@ -71,15 +71,13 @@
 				<tr>
 					<th>login</th>
 					<th>email</th>
-					<th>qtdSeries</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="usuario" items="${lista_usuarios}">
+				<c:forEach var="u" items="${lista_usuarios}">
 					<tr>
-						<td>${usuario.login}</td>
-						<td>${usuario.email}</td>
-						<td>${usuario.admin}</td>
+						<td>${u.login}</td>
+						<td>${u.email}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

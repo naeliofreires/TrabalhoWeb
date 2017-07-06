@@ -44,9 +44,9 @@
 				<br>
 				<br>
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.login}
+					<span style="padding-left: 30px;"></span> ${usuario.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario_logado.email}
+					<span style="padding-left: 30px;"></span> ${usuario.email}
 				</a>
 			</div>
 		</li>
@@ -107,7 +107,19 @@
 					Origem:
 				</h6>
 				
-				<a class="right">editar</a>
+				<c:choose>
+					<c:when test="${usuario.admin == true}">
+		        		<a href="#" class="waves-effect waves-teal btn-flat right">
+							<i class="material-icons"> edit </i>
+						</a>
+		    		</c:when>
+					<c:otherwise>
+		        		<a href="#" class="waves-effect waves-teal btn-flat right">
+							<i class="material-icons"> add </i>
+						</a>
+		    		</c:otherwise>
+				</c:choose>
+				
 			</div>
 			
 		</div>	
