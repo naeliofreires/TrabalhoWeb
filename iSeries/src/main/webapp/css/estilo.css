@@ -7,7 +7,7 @@ nav{
 }
 
 figure{
-	width: 210px;
+	width: 215px;
 	height: 260px;
 	text-align: center;
 	padding-top: 5px;
@@ -27,4 +27,8 @@ figure{
 
 .sinopse{
 	height: 260px;
+}
+
+.informacoes{
+	width: 215px;
 }

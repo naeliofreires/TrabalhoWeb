@@ -68,16 +68,17 @@
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	
-	<div class="container">
+	<div id="dados_serie" class="container">
 		
 		<div class="row">
 		
 			<div class="col s4">
 				<figure class="branco">
  					<img width="200" height="250" src="resources/img/noticias/${serie.path}"> 
-				</figure>				
+				</figure>
 			</div>
 			
 			<div class="col s8 sinopse" >
@@ -86,16 +87,15 @@
 			
 			
 			<br><hr><br>
-			
-			<div class="col s4"></div>
 		
-			<div  class="col s8 cinza">
-				<h5 style="text-align: center;">Informações da Serie</h5>
+			<div  class="col s4  informacoes">
+				<div class="container cinza">
+				<h5 style="text-align: center;">Informações</h5>
 				<h6>
 					Título Original: <label>${serie.nome}</label>
 				</h6>
 				<h6>
-					Diretor: 
+					Diretor: <label>${serie.diretor}</label>
 				</h6>
 				<h6>
 					Gênero:  <label>${serie.genero}</label>
@@ -104,27 +104,39 @@
 					Ano de Lançamento: <label>${serie.ano}</label>
 				</h6>
 				<h6>
-					Origem:
+					Origem: <label>${serie.origem}</label>
 				</h6>
 				
 				<c:choose>
 					<c:when test="${usuario.admin == true}">
 		        		<a href="#" class="waves-effect waves-teal btn-flat right">
-							<i class="material-icons"> edit </i>
+							<i id="button_edit" class="material-icons"> edit </i>
 						</a>
 		    		</c:when>
 					<c:otherwise>
 		        		<a href="#" class="waves-effect waves-teal btn-flat right">
-							<i class="material-icons"> add </i>
+							<i id="button_add" class="material-icons"> add </i>
 						</a>
 		    		</c:otherwise>
 				</c:choose>
-				
+				</div>
+			</div>
+			
+			<!-- Lista de Temporadas -->
+			<div class="col s8">
+			
 			</div>
 			
 		</div>	
 	</div>
 	
+	<!-- -------------------------------------------------------------------------------- -->
+	<div id="form_update_serie" class="container">
+		<div>
+			<h6 id="dados_serie2" class="center"><a href="#"><i class="material-icons">keyboard_arrow_down</i></a></h6>
+		</div>
+		<jsp:include page="../forms/form_update_serie.jsp" />
+	</div>
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/materialize.min.js"/>"></script>

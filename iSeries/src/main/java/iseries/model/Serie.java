@@ -21,6 +21,10 @@ public class Serie {
 	@NotNull
 	private String nome;
 	@NotNull
+	private String diretor;
+	@NotNull
+	private String origem;
+	@NotNull
 	private String genero;
 	@NotNull
 	private String sinopse;
@@ -29,15 +33,6 @@ public class Serie {
 	@Column(name="PATH")
 	private String path;
 	
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
-
-	// serie tem várias temporadas
 	@OneToMany
 	(mappedBy = "serie", targetEntity = Temporada.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Temporada> temporadas;
@@ -48,14 +43,18 @@ public class Serie {
 		super();
 		this.id = id;
 	}
-
-	public Serie(Integer id, String nome, String genero, String sinopse, String ano, List<Temporada> temporadas) {
+	
+	public Serie(Integer id, String nome, String diretor, String origem, String genero, String sinopse, String ano,
+			String path, List<Temporada> temporadas) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.diretor = diretor;
+		this.origem = origem;
 		this.genero = genero;
 		this.sinopse = sinopse;
 		this.ano = ano;
+		this.path = path;
 		this.temporadas = temporadas;
 	}
 
@@ -73,6 +72,22 @@ public class Serie {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDiretor() {
+		return diretor;
+	}
+
+	public void setDiretor(String diretor) {
+		this.diretor = diretor;
+	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
 	}
 
 	public String getGenero() {
@@ -97,6 +112,14 @@ public class Serie {
 
 	public void setAno(String ano) {
 		this.ano = ano;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public List<Temporada> getTemporadas() {

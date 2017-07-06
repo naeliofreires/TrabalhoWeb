@@ -30,7 +30,7 @@ public class LoginController {
 			session.setAttribute("usuario", user.get(0));
 			
 			if(user.get(0).isAdmin())
-				return "/adm/home-adm";
+				return "forward:listaSeries";
 			
 			return "redirect:homeUsuario";
 		}

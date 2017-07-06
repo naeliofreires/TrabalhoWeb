@@ -1,8 +1,10 @@
 package iseries.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,6 @@ public class SerieController {
 	@RequestMapping(value = "cadastraSerie", method = RequestMethod.POST)
 	String cadastraSerie(Serie serie, @RequestParam(value="imagem", required=false) MultipartFile imagem) throws IOException{
 		
-		System.out.println(imagem.getName() );
 		if(imagem.getBytes().length != 0){
 			FileUtil.salvarImagem(servletContext.getRealPath("/")+"resources/img/noticias/"+serie.getNome()+".png", imagem);
 			serie.setPath(serie.getNome()+".png");
@@ -41,6 +42,23 @@ public class SerieController {
 		return "redirect:listaSeries";
 	}
 	
+	@RequestMapping(value = "updateSerie", method = RequestMethod.POST)
+	String updateSerie(Serie serie, Model model, @RequestParam(value="imagem", required=false) MultipartFile imagem) throws IOException{
+		
+		if(imagem.getBytes().length != 0){
+			FileUtil.salvarImagem(servletContext.getRealPath("/")+"resources/img/noticias/"+serie.getNome()+".png", imagem);
+			serie.setPath(serie.getNome()+".png");
+		}else{
+			serie.setPath("news.png");
+		}
+		
+		serieRepo.save(serie);
+		serie = serieRepo.findOne(serie.getId());
+		model.addAttribute("serie", serie);
+		
+		return "/user/visualizar-serie";
+	}
+	
 	@RequestMapping(value = "viewSerie", method = RequestMethod.GET)
 	String viewSerie(Serie serie, Model model){
 		
@@ -50,4 +68,16 @@ public class SerieController {
 		
 		return "/user/visualizar-serie";
 	}
+	
+	@RequestMapping("listaSeries")
+	String listarSeries(Model model){
+		
+		List<Serie> series = serieRepo.findAll();
+		
+		model.addAttribute("lista_series", series);
+		
+		
+		return "/adm/lista-series";
+	}
+
 }
