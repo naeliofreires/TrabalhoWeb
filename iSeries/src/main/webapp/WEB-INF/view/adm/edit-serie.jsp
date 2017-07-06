@@ -14,13 +14,15 @@
 <!-- CSS -->
 <link href="<c:url value='/css/estilo.css' />" rel="stylesheet"
 	type="text/css" />
-<title>Home - ${usuario_logado.login}</title>
+<title>${serie.nome}</title>
 </head>
 <body>
 
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">iSeries</a>
+			<a href="#" class="brand-logo right">
+				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
+			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
 						class="material-icons">menu</i></a></li>
@@ -28,7 +30,7 @@
 		</div>
 	</nav>
 
-	<hr> <br>
+	<br>
 		
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
@@ -68,10 +70,52 @@
 	</ul>
 	<!-- -------------------------------------------------------------------------------- -->
 	
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col s4">
+				<figure class="branco">
+ 					<img width="200" height="250" src="resources/img/noticias/${serie.path}"> 
+				</figure>				
+			</div>
+			
+			<div class="col s8 sinopse" >
+				<p>${serie.sinopse}</p>
+			</div>
+			
+			
+			<br><hr><br>
+			
+			<div class="col s4"></div>
+		
+			<div  class="col s8 cinza">
+				<h5 style="text-align: center;">Informações da Serie</h5>
+				<h6>
+					Título Original: <label>${serie.nome}</label>
+				</h6>
+				<h6>
+					Diretor: 
+				</h6>
+				<h6>
+					Gênero:  <label>${serie.genero}</label>
+				</h6>
+				<h6>
+					Ano de Lançamento: <label>${serie.ano}</label>
+				</h6>
+				<h6>
+					Origem:
+				</h6>
+				
+				<a class="right">editar</a>
+			</div>
+			
+		</div>	
+	</div>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/js/materialize.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/js/materialize.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/script.js"/>"></script>
 
 </body>

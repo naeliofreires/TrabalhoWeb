@@ -1,11 +1,30 @@
 html{
-	background-color: #F8F8FF;
+	background-color:#EEE9E9;
 }
 
 nav{
 	background-color: #FF0000;
 }
 
+figure{
+	width: 210px;
+	height: 260px;
+	text-align: center;
+	padding-top: 5px;
+}
+
 .form-modal{
 	  background-image: url("img/logo.png");
+}
+
+.cinza{
+	background-color: #D3D3D3;
+}
+
+.branco{
+	background-color: #FFFAFA;
+}
+
+.sinopse{
+	height: 260px;
 }

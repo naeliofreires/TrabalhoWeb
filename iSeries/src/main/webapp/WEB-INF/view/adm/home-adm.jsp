@@ -38,9 +38,8 @@
 					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
 
-				<br>
-				<br>
-				<br>
+				<br><br>
+				
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
 					<span style="padding-left: 30px;"></span> ${usuario_logado.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>

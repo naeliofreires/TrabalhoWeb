@@ -44,9 +44,9 @@ public class SerieController {
 	@RequestMapping(value = "viewSerie", method = RequestMethod.GET)
 	String viewSerie(Serie serie, Model model){
 		
-		Serie serieX = serieRepo.findOne(serie.getId());
+		serie = serieRepo.findOne(serie.getId());
 		
-		model.addAttribute("serie", serieX);
+		model.addAttribute("serie", serie);
 		
 		return "/adm/edit-serie";
 	}

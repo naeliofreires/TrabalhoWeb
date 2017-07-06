@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import iseries.model.Serie;
 import iseries.model.Usuario;
+import iseries.repository.SerieRepository;
 import iseries.repository.UsuarioRepository;
 
 @Controller
@@ -17,6 +19,8 @@ public class LoginController {
 
 	@Autowired
 	UsuarioRepository userRepo;
+	
+
 	
 	@RequestMapping(value = "logar", method = RequestMethod.POST)
 	String logar(Usuario usuario, HttpSession session){
@@ -28,7 +32,7 @@ public class LoginController {
 			if(user.get(0).isAdmin())
 				return "/adm/home-adm";
 			
-			return "/user/home-user";
+			return "redirect:homeUsuario";
 		}
 		return "redirect:/";
 	}

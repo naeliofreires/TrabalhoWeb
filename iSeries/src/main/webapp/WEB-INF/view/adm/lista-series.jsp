@@ -14,25 +14,28 @@
 <!-- CSS -->
 <link href="<c:url value='/css/estilo.css' />" rel="stylesheet"
 	type="text/css" />
-<title> Lista de Series - ${usuario_logado.login}</title>
+<title> Lista de Series</title>
 </head>
 <body>
 
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">iSeries</a>
+			<a href="#" class="brand-logo right">
+				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
+			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
 						class="material-icons">menu</i></a></li>
 				<li>
-					<!-- Modal Add Serie -->
-					<a href="#modal1">Add Series</a>
+					<a id="add_series" href="#" >Add Series</a>
+					<a id="lista_series" href="#" >Lista de Series</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
-
-	<hr> <br>
+	
+	<br>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -69,74 +72,16 @@
 	</ul>
 	
 	<!-- -------------------------------------------------------------------------------- -->
-	
-	<!-- Modal Add Serie -->
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<p style="text-align: center">
-				<img width="50" height="50" src="img/logo.png" alt=""
-					class="responsive-img"> <br> Add Serie
-			</p>
-			<form action="cadastraSerie" method="POST" enctype="multipart/form-data">
-				<div class="container">
-
-					<i class="material-icons">movie</i>
-					<div class="input-field col s12">
-						<input id="nome" name="nome" type="text"> <label
-							for="nome" class="center-align">Nome da Serie</label>
-					</div>
-
-					<i class="material-icons">description</i>
-					<div class="input-field col s12">
-						<input id="sinopse" name="sinopse" type="text"> <label
-							for="sinopse" class="center-align">Sinopse</label>
-					</div>
-
-					<i class="material-icons">today</i>
-					<div class="input-field col s12">
-						<input id="ano" name="ano" type="text" maxlength="4"> <label
-							for="ano" class="center-align">Ano de Lançamento</label>
-					</div>
-
-					<i class="material-icons">change_history</i>
-					<div class="input-field col s12">
-						<input id="genero" name="genero" type="text" maxlength="8">
-						<label for="genero" class="center-align">Genero</label>
-					</div>
-					
-					<!-- File Imagem -->
-					<div class="file-field input-field" align="right">
-				    	<div class="btn">
-				        	<span>Imagem</span>
-				        	<input name="imagem" type="file">
-				      	</div>
-				      	<div class="file-path-wrapper">
-				        	<input class="file-path validate" type="text">
-				    	</div>
-	    			</div>
-	    			
-					<div class="row">
-						<div class="input-field">
-							<button class="btn waves-effect waves-light col s12">Register</button>
-						</div>
-					</div>
-				</div>
-			</form>
-
-		</div>
-	</div>
-
-	<!-- -------------------------------------------------------------------------------- -->
 		
-	<div class="row container">
+	<div id="listagem_series_adm" class="row container">
 		<c:forEach var="serie" items="${lista_series}">
-		<div class="col s3 container">
+		<div class="col s4 ">
 			<div class="card">
 				<div class="card-image">
-					<img width="100" height="100" src="resources/img/noticias/${serie.path}"> 
-					<span class="card-title">${serie.nome}</span>
+					<img width="100" height="200" src="resources/img/noticias/${serie.path}"> 
 				</div>
 				<div class="card-content">
+					<span class="card-title">${serie.nome}</span>
 					<label>Genero: ${serie.genero}</label> <br> 
 					<label>Ano de Lançamento: ${serie.ano}</label>
 				</div>
@@ -146,6 +91,13 @@
 			</div>
 		</div>
 		</c:forEach>
+	</div>
+	
+	<!-- -------------------------------------------------------------------------------- -->
+	
+	<!-- Formulario Adicionar Serie -->
+	<div id="form_add_serie" class="container">
+		<jsp:include page="../forms/form_add_serie.jsp" />
 	</div>
 	
 	<!-- -------------------------------------------------------------------------------- -->

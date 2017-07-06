@@ -20,7 +20,9 @@
 
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">iSeries</a>
+			<a href="#" class="brand-logo right">
+				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
+			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li> <a href="#modal1">Sign In</a></li>
 			</ul>
@@ -30,11 +32,10 @@
 		</div>
 	</nav>
 
-	<hr>
-	<br>
 	<br>
 	
 	<!-- -------------------------------------------------------------------------------- -->
+	
 	<div class="container">
 		<div class="slider">
 			<ul class="slides">
