@@ -1,11 +1,16 @@
 package iseries.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity(name="temporadas")
@@ -19,11 +24,15 @@ public class Temporada {
 	private String numero;
 	
 	@NotNull
-	private String sinopse;
+	private String duracao;
 	
 	@ManyToOne
 	@JoinColumn(name="serie_id")
 	private Serie serie;
+	
+	@OneToMany
+	(mappedBy = "temporada", targetEntity = Episodio.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Episodio> episodios;
 	
 	public Temporada() {}
 
@@ -32,12 +41,13 @@ public class Temporada {
 		this.id = id;
 	}
 
-	public Temporada(Integer id, String numero, String sinopse, Serie serie) {
+	public Temporada(Integer id, String numero, String duracao, Serie serie, List<Episodio> episodios) {
 		super();
 		this.id = id;
 		this.numero = numero;
-		this.sinopse = sinopse;
+		this.duracao = duracao;
 		this.serie = serie;
+		this.episodios = episodios;
 	}
 
 	public Integer getId() {
@@ -56,12 +66,12 @@ public class Temporada {
 		this.numero = numero;
 	}
 
-	public String getSinopse() {
-		return sinopse;
+	public String getDuracao() {
+		return duracao;
 	}
 
-	public void setSinopse(String sinopse) {
-		this.sinopse = sinopse;
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
 	}
 
 	public Serie getSerie() {
@@ -70,6 +80,14 @@ public class Temporada {
 
 	public void setSerie(Serie serie) {
 		this.serie = serie;
+	}
+
+	public List<Episodio> getEpisodios() {
+		return episodios;
+	}
+
+	public void setEpisodios(List<Episodio> episodios) {
+		this.episodios = episodios;
 	}
 
 }

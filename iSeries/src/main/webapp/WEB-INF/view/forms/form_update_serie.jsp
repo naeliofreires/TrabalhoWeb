@@ -27,12 +27,12 @@
 				</div>
 				
 				<div class="input-field col s6">
-					<input id="diretor" name="diretor" type="text"> 
+					<input id="diretor" name="diretor" type="text" value="${serie.diretor}"> 
 					<label	for="diretor" class="center-align">Diretor da Serie</label>
 				</div>
 				
 				<div class="input-field col s6">
-					<input id="origem" name="origem" type="text"> 
+					<input id="origem" name="origem" type="text" value="${serie.origem }"> 
 					<label	for="origem" class="center-align">Origem</label>
 				</div>
 				
@@ -52,7 +52,7 @@
 
 				<div class="input-field col s12">
 	       			<i class="material-icons prefix">description</i>
-	       			<textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+	       			<textarea id="sinopse" name="sinopse" class="materialize-textarea">${serie.sinopse}</textarea>
 	       			<label for="sinopse">Sinopse</label>
 	       		</div>
 	

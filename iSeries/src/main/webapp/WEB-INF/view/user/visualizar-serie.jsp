@@ -6,18 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Materialize -->
-<link href="<c:url value='/css/materialize.min.css' />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet" type="text/css" />
 <!-- Icones -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- CSS -->
-<link href="<c:url value='/css/estilo.css' />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet" type="text/css" />
 <title>${serie.nome}</title>
 </head>
 <body>
-
+	
+	<!-- -------------------------------------------------------------------------------- -->
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo right">
@@ -28,10 +26,7 @@
 						class="material-icons">menu</i></a></li>
 			</ul>
 		</div>
-	</nav>
-
-	<br>
-		
+	</nav> <br>
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -39,11 +34,10 @@
 				<div class="background">
 					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
-
-				<br>
-				<br>
-				<br>
-				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
+				
+				<br>	<br>	<br>	<br>
+				
+				<a href="#!name"> <i class="material-icons">perm_identity</i>
 					<span style="padding-left: 30px;"></span> ${usuario.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
 					<span style="padding-left: 30px;"></span> ${usuario.email}
@@ -68,26 +62,23 @@
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
-	
 	<!-- -------------------------------------------------------------------------------- -->
-	
 	<div id="dados_serie" class="container">
 		
 		<div class="row">
 		
 			<div class="col s4">
 				<figure class="branco">
- 					<img width="200" height="250" src="resources/img/noticias/${serie.path}"> 
+					<img width="200" height="250" src="resources/img/noticias/${serie.path}"> 
 				</figure>
 			</div>
 			
 			<div class="col s8 sinopse" >
 				<p>${serie.sinopse}</p>
 			</div>
-			
-			
+
 			<br><hr><br>
-		
+
 			<div  class="col s4  informacoes">
 				<div class="container cinza">
 				<h5 style="text-align: center;">Informações</h5>
@@ -109,13 +100,19 @@
 				
 				<c:choose>
 					<c:when test="${usuario.admin == true}">
-		        		<a class="waves-effect waves-teal btn-flat right">
-							<i id="button_edit" class="material-icons"> edit </i>
+						<a class="waves-effect waves-teal btn-flat left">
+							<i class="material-icons">reply</i>
 						</a>
-		    		</c:when>
+						<a id="button_edit" class="waves-effect waves-teal btn-flat right">
+							<i class="material-icons"> edit </i>
+						</a>
+					</c:when>
 					<c:otherwise>
-		        		<a class="waves-effect waves-teal btn-flat right">
-							<i id="button_add" class="material-icons"> add </i>
+						<a class="waves-effect waves-teal btn-flat left">
+							<i class="material-icons">reply</i>
+						</a>
+		        		<a id="button_add" class="waves-effect waves-teal btn-flat right">
+							<i class="material-icons"> add </i>
 						</a>
 		    		</c:otherwise>
 				</c:choose>
@@ -124,19 +121,53 @@
 			
 			<!-- Lista de Temporadas -->
 			<div class="col s8">
+				<c:if test="${usuario.admin == true}">
+					<div id="form-add-temporada">
+						<jsp:include page="../forms/form_add_temporada.jsp" />
+					</div>
+				</c:if>
 				<table>
 					<thead>
 						<tr>
-							<th>Número/Nome</th>
-							<th>Sinopse</th>
+							<th>Nome/Número</th>
+							<th>Duração</th>
+							<c:if test="${usuario.admin == true}">
+								<th id="ativar-form-add-temporada">
+									<a href="#">
+										<i class="material-icons">add</i>
+									</a>
+								</th>
+								<th id="ocultar-form-add-temporada">
+									<a href="#" >
+										<i class="material-icons">keyboard_arrow_up</i>
+									</a>
+								</th>
+							</c:if>
+							
 						</tr>
 					</thead>
 
 					<tbody>
 						<c:forEach var="t" items="${temporadas}">
-	         				<tr>
+							<tr>
 								<td>${t.numero}</td>
-								<td>${t.sinopse}</td>
+								<td>${t.duracao}</td>
+								<c:if test="${usuario.admin == true}">
+									<td>
+										<h6 class="center">
+											<a href="#" id="editTemporada">
+												<i class="material-icons">edit</i>
+											</a>
+										</h6>
+									</td>
+									<td>
+										<h6 class="center">
+											<a href="deleteTemp?id_tmp=${t.id}&id_serie=${serie.id}">
+												<i class="material-icons">delete</i>
+											</a>
+										</h6>
+									</td>
+								</c:if>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -145,25 +176,26 @@
 			
 		</div>
 	</div>
-	
 	<!-- -------------------------------------------------------------------------------- -->
 	<c:if test = "${usuario.admin == true}">
 		<div id="form_update_serie" class="container">
-			<div>
-				<h6 id="dados_serie2" class="center"><a href="#"><i class="material-icons">keyboard_arrow_down</i></a></h6>
-			</div>
-			<jsp:include page="../forms/form_update_serie.jsp" />
 			
-			<jsp:include page="../forms/form_add_temporada.jsp" />
+			<div>
+				<h6 id="dados_serie2" class="center">
+					<a href="#">
+						<i class="material-icons">keyboard_arrow_down</i>
+					</a>
+				</h6>
+			</div>
+			
+			<jsp:include page="../forms/form_update_serie.jsp" />
 		</div>
 	</c:if>
 	<!-- -------------------------------------------------------------------------------- -->
 	
-	
-      
-	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/materialize.min.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/script.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/script.js"/>"></script>
 
 </body>
 </html>

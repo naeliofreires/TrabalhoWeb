@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Materialize -->
-<link href="<c:url value='/css/materialize.min.css' />" rel="stylesheet"
+<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet"
 	type="text/css" />
 <!-- Icones -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <!-- CSS -->
-<link href="<c:url value='/css/estilo.css' />" rel="stylesheet"
+<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"
 	type="text/css" />
 <title> Lista de Usuarios - ${usuario_logado.login}</title>
 </head>
@@ -85,9 +85,9 @@
 
 	</div>
 	<!-- -------------------------------------------------------------------------------- -->
-	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript"
-		src="<c:url value="/js/materialize.min.js"/>"></script>
+		src="<c:url value="resources/js/materialize.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/script.js"/>"></script>
 
 </body>
