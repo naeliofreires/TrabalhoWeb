@@ -109,12 +109,12 @@
 				
 				<c:choose>
 					<c:when test="${usuario.admin == true}">
-		        		<a href="#" class="waves-effect waves-teal btn-flat right">
+		        		<a class="waves-effect waves-teal btn-flat right">
 							<i id="button_edit" class="material-icons"> edit </i>
 						</a>
 		    		</c:when>
 					<c:otherwise>
-		        		<a href="#" class="waves-effect waves-teal btn-flat right">
+		        		<a class="waves-effect waves-teal btn-flat right">
 							<i id="button_add" class="material-icons"> add </i>
 						</a>
 		    		</c:otherwise>
@@ -124,20 +124,43 @@
 			
 			<!-- Lista de Temporadas -->
 			<div class="col s8">
-			
+				<table>
+					<thead>
+						<tr>
+							<th>Número/Nome</th>
+							<th>Sinopse</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<c:forEach var="t" items="${temporadas}">
+	         				<tr>
+								<td>${t.numero}</td>
+								<td>${t.sinopse}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 			
-		</div>	
+		</div>
 	</div>
 	
 	<!-- -------------------------------------------------------------------------------- -->
-	<div id="form_update_serie" class="container">
-		<div>
-			<h6 id="dados_serie2" class="center"><a href="#"><i class="material-icons">keyboard_arrow_down</i></a></h6>
+	<c:if test = "${usuario.admin == true}">
+		<div id="form_update_serie" class="container">
+			<div>
+				<h6 id="dados_serie2" class="center"><a href="#"><i class="material-icons">keyboard_arrow_down</i></a></h6>
+			</div>
+			<jsp:include page="../forms/form_update_serie.jsp" />
+			
+			<jsp:include page="../forms/form_add_temporada.jsp" />
 		</div>
-		<jsp:include page="../forms/form_update_serie.jsp" />
-	</div>
+	</c:if>
 	<!-- -------------------------------------------------------------------------------- -->
+	
+	
+      
 	<script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/materialize.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/script.js"/>"></script>

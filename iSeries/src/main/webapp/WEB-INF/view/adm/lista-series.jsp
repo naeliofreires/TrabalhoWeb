@@ -58,12 +58,9 @@
 
 		<li><div class="divider"></div></li>
 
-		<li><a href="homeAdm"><i class="material-icons"> store
+		<li><a href="listaUsuarios"><i class="material-icons"> store
 			</i> Home </a></li>
 			
-		<li><a href="listaUsuarios"><i class="material-icons">supervisor_account
-			</i> Lista de Usuarios</a></li>
-
 		<li><div class="divider"></div></li>
 
 		<li><a href="logout" class="waves-effect"> <i

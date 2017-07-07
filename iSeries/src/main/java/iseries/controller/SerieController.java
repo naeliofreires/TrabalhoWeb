@@ -1,6 +1,7 @@
 package iseries.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import iseries.model.Serie;
+import iseries.model.Temporada;
 import iseries.repository.SerieRepository;
+import iseries.repository.TemporadaRepository;
 import iseries.util.FileUtil;
 
 @Controller
@@ -24,6 +27,9 @@ public class SerieController {
 	
 	@Autowired
 	SerieRepository serieRepo;
+	
+	@Autowired
+	TemporadaRepository tempRepo;
 	
 	@Autowired
 	private ServletContext servletContext;
@@ -60,11 +66,15 @@ public class SerieController {
 	}
 	
 	@RequestMapping(value = "viewSerie", method = RequestMethod.GET)
-	String viewSerie(Serie serie, Model model){
+	String viewSerie(HttpSession session, Model model, @RequestParam(value="id", required=false) Integer id){
 		
-		serie = serieRepo.findOne(serie.getId());
+		if(session.getAttribute("idx") != null)
+			id = (Integer) session.getAttribute("idx");
 		
-		model.addAttribute("serie", serie);
+		ArrayList<Temporada> temporadas = (ArrayList<Temporada>) tempRepo.findTemporadaOfSerie(id);
+		
+		model.addAttribute("serie", serieRepo.findOne(id));
+		model.addAttribute("temporadas", temporadas);
 		
 		return "/user/visualizar-serie";
 	}

@@ -14,10 +14,13 @@ public class Temporada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotNull
+	private String numero;
+	
 	@NotNull
 	private String sinopse;
 	
-	// temporada tem uma unica serie
 	@ManyToOne
 	@JoinColumn(name="serie_id")
 	private Serie serie;
@@ -29,9 +32,10 @@ public class Temporada {
 		this.id = id;
 	}
 
-	public Temporada(Integer id, String sinopse, Serie serie) {
+	public Temporada(Integer id, String numero, String sinopse, Serie serie) {
 		super();
 		this.id = id;
+		this.numero = numero;
 		this.sinopse = sinopse;
 		this.serie = serie;
 	}
@@ -44,6 +48,22 @@ public class Temporada {
 		this.id = id;
 	}
 
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
+	}
+
 	public Serie getSerie() {
 		return serie;
 	}
@@ -52,13 +72,4 @@ public class Temporada {
 		this.serie = serie;
 	}
 
-	public String getSinopse() {
-		return sinopse;
-	}
-
-
-	public void setSinopse(String sinopse) {
-		this.sinopse = sinopse;
-	}
-	
 }

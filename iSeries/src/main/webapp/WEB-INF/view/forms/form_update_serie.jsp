@@ -1,5 +1,8 @@
 <form action="updateSerie" method="POST" enctype="multipart/form-data">
 		<div class="row">
+				
+				<input id="id" name="id" type="text" value="${serie.id}" hidden="true"> 
+				
 				<div class="input-field col s6">
 					<i class="material-icons prefix">movie</i>
 					<input id="nome" name="nome" type="text" value="${serie.nome}"> 
@@ -14,7 +17,7 @@
 				
 				<div class="input-field col s3">
 					<select id="genero" name="genero" class="icons">
-				      <option value="" disabled selected> Selecione o genero</option>
+				      <option value="" disabled selected>Selecione o genero...</option>
 				      <option value="Terror" data-icon="/img/generos/terror.jpg" class="circle">Terror</option>
 				      <option value="Suspense" data-icon="/img/generos/suspense.png" class="circle">Suspense</option>
 				      <option value="Comédia" data-icon="/img/generos/comedia.jpg" class="circle">Comédia</option>
@@ -24,12 +27,12 @@
 				</div>
 				
 				<div class="input-field col s6">
-					<input id="diretor" name="diretor" type="text" value="${serie.diretor}"> 
+					<input id="diretor" name="diretor" type="text"> 
 					<label	for="diretor" class="center-align">Diretor da Serie</label>
 				</div>
 				
 				<div class="input-field col s6">
-					<input id="origem" name="origem" type="text" value="${serie.origem}"> 
+					<input id="origem" name="origem" type="text"> 
 					<label	for="origem" class="center-align">Origem</label>
 				</div>
 				
@@ -49,7 +52,7 @@
 
 				<div class="input-field col s12">
 	       			<i class="material-icons prefix">description</i>
-	       			<textarea id="sinopse" name="sinopse" class="materialize-textarea">${serie.sinopse}</textarea>
+	       			<textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
 	       			<label for="sinopse">Sinopse</label>
 	       		</div>
 	
