@@ -100,7 +100,7 @@
 				
 				<c:choose>
 					<c:when test="${usuario.admin == true}">
-						<a class="waves-effect waves-teal btn-flat left">
+						<a href="listaSeries" class="waves-effect waves-teal btn-flat left">
 							<i class="material-icons">reply</i>
 						</a>
 						<a id="button_edit" class="waves-effect waves-teal btn-flat right">
@@ -108,7 +108,7 @@
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a class="waves-effect waves-teal btn-flat left">
+						<a href="listaSeries" class="waves-effect waves-teal btn-flat left">
 							<i class="material-icons">reply</i>
 						</a>
 		        		<a id="button_add" class="waves-effect waves-teal btn-flat right">
