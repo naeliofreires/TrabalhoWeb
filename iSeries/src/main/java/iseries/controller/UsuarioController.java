@@ -22,13 +22,8 @@ public class UsuarioController {
 	
 	@Autowired
 	SerieRepository serieRepo;
-	
-	@RequestMapping("cadastro")
-	String telaCadastro(){
-		return "/user/cadastro";
-	}
-	
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+
+	@RequestMapping(value = "efetuarCadastro", method = RequestMethod.POST)
 	String addUsuario(Usuario usuario){
 		userRepo.save(usuario);
 		return "redirect:/";

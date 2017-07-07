@@ -17,10 +17,8 @@ public class LoginController {
 
 	@Autowired
 	UsuarioRepository userRepo;
-	
 
-	
-	@RequestMapping(value = "logar", method = RequestMethod.POST)
+	@RequestMapping(value = "efeturarLogin", method = RequestMethod.POST)
 	String logar(Usuario usuario, HttpSession session){
 		
 		List<Usuario> user = userRepo.findByLoginAndSenha(usuario.getLogin(), usuario.getSenha());
@@ -30,11 +28,11 @@ public class LoginController {
 			session.setAttribute("usuario", user.get(0));
 			
 			if(user.get(0).isAdmin())
-				return "forward:listaSeries";
+				return "redirect:listaSeries";
 			
 			return "redirect:homeUsuario";
 		}
-		return "redirect:/";
+		return "forward:/";
 	}
 	
 	@RequestMapping("logout")

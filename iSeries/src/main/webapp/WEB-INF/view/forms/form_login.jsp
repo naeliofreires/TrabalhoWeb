@@ -1,4 +1,4 @@
-<form action="logar" method="POST">
+<form action="efeturarLogin" method="POST">
 					<div>
 						<p style="text-align: center">
 							<img src="img/logo.png" alt="" class="responsive-img">
