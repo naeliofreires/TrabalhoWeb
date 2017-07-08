@@ -72,7 +72,7 @@
 		
 	<div id="listagem_series_adm" class="row container">
 		<c:forEach var="serie" items="${lista_series}">
-		<div class="col s4 ">
+		<div class="col s3 ">
 			<div class="card">
 				<div class="card-image">
 					<img width="100" height="200" src="resources/img/noticias/${serie.path}"> 

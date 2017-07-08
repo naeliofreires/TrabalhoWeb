@@ -1,6 +1,6 @@
 <form action="updateTemporada" method="POST">
 	<div class="row">
-
+	
 			<div class="input-field col s5">
 				<i class="material-icons prefix"></i>
 				<input id="numero" name="numero" type="text"> 
@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="input-field">
-					<button class="btn waves-effect waves-light col s2 right">adicionar</button>
+				<button class="btn waves-effect waves-light col s2 right">adicionar</button>
 			</div>
 
 	</div>

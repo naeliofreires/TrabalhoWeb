@@ -6,7 +6,7 @@
 				<div class="input-field col s6">
 					<i class="material-icons prefix">movie</i>
 					<input id="nome" name="nome" type="text" value="${serie.nome}"> 
-					<label	for="nome" class="center-align">Nome da Serie</label>
+					<label for="nome" class="center-align">Nome da Serie</label>
 				</div>
 
 				<div class="input-field col s3">

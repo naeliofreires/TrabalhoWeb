@@ -1,5 +1,6 @@
 package iseries.model;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +19,7 @@ public class Serie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID_SERIE")
 	private Integer id;
 	@NotNull
 	private String nome;
@@ -32,6 +35,9 @@ public class Serie {
 	private String ano;
 	@Column(name="PATH")
 	private String path;
+	
+	@ManyToMany(mappedBy="minhas_series",  fetch=FetchType.LAZY)
+	private Collection<Usuario> usuarios;
 	
 	@OneToMany
 	(mappedBy = "serie", targetEntity = Temporada.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -129,5 +135,4 @@ public class Serie {
 	public void setTemporadas(List<Temporada> temporadas) {
 		this.temporadas = temporadas;
 	}
-	
 }

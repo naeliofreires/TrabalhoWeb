@@ -59,8 +59,12 @@ public class SerieController {
 		}
 		
 		serieRepo.save(serie);
+		
 		serie = serieRepo.findOne(serie.getId());
 		model.addAttribute("serie", serie);
+		
+		ArrayList<Temporada> temporadas = (ArrayList<Temporada>) tempRepo.findTemporadaOfSerie(serie.getId());
+		model.addAttribute("temporadas", temporadas);
 		
 		return "/user/visualizar-serie";
 	}

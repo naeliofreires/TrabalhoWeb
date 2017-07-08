@@ -1,9 +1,17 @@
 package iseries.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity(name="usuarios")
@@ -11,6 +19,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID_USUARIO", nullable=false)
 	private Integer id;
 	@NotNull 
 	private String login;
@@ -20,7 +29,13 @@ public class Usuario {
 	private String senha;
 	@NotNull 
 	private boolean admin;
-
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USUARIO_SERIE", 
+		joinColumns = { @JoinColumn(name = "ID_USUARIO", referencedColumnName="ID_USUARIO")}, 
+		inverseJoinColumns = { @JoinColumn(name = "ID_SERIE",  referencedColumnName="ID_SERIE") })
+	private Collection<Serie> minhas_series;
+	
 	public Usuario() { }
 	
 	public Usuario(int id){
@@ -74,5 +89,13 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
+
+	public Collection<Serie> getMinhas_series() {
+		return minhas_series;
+	}
+
+	public void setMinhas_series(Collection<Serie> minhas_series) {
+		this.minhas_series = minhas_series;
+	}
+
 }

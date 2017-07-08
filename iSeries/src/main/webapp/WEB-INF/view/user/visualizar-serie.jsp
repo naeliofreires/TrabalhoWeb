@@ -47,14 +47,11 @@
 
 		<li><div class="divider"></div></li>
 		
-		<li><a href="homeAdm"><i class="material-icons"> store
+		<li><a href="listaSeries"><i class="material-icons"> store
 			</i> Home </a></li>
 			
 		<li><a href="listaUsuarios"><i class="material-icons">supervisor_account
 			</i> Lista de Usuarios</a></li>
-			
-		<li><a href="listaSeries"><i class="material-icons">movie</i>
-				Lista de Series</a></li>
 
 		<li><div class="divider"></div></li>
 
@@ -119,7 +116,7 @@
 				</div>
 			</div>
 			
-			<!-- Lista de Temporadas -->
+			<!-- 		Lista de Temporadas 		-->
 			<div class="col s8">
 				<c:if test="${usuario.admin == true}">
 					<div id="form-add-temporada">
@@ -131,6 +128,8 @@
 						<tr>
 							<th>Nome/Número</th>
 							<th>Duração</th>
+							<th></th>
+							<th></th>
 							<c:if test="${usuario.admin == true}">
 								<th id="ativar-form-add-temporada">
 									<a href="#">
@@ -153,6 +152,13 @@
 								<td>${t.numero}</td>
 								<td>${t.duracao}</td>
 								<c:if test="${usuario.admin == true}">
+									<td>
+										<h6 class="center">
+											<a href="#" id="addEpisodio">
+												<i class="material-icons">add</i>
+											</a>
+										</h6>
+									</td>
 									<td>
 										<h6 class="center">
 											<a href="#" id="editTemporada">
@@ -189,6 +195,7 @@
 			</div>
 			
 			<jsp:include page="../forms/form_update_serie.jsp" />
+			
 		</div>
 	</c:if>
 	<!-- -------------------------------------------------------------------------------- -->
