@@ -22,9 +22,6 @@
 				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
 			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
-				<li> <a href="#modal1">Sign In</a></li>
-			</ul>
-			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#modal2">Sign Up</a></li>
 			</ul>
 		</div>
@@ -32,24 +29,25 @@
 
 	<br><br>
 	
-	<!-- -------------------------------------------------------------------------------- -->
-	
 	<!-- slide -->
-      
-	<!-- -------------------------------------------------------------------------------- -->
-
-	<!-- Modal Log In -->
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<jsp:include page="forms/form_login.jsp" />
-		</div>
-	</div>
 	<!-- -------------------------------------------------------------------------------- -->
 	
-	<!-- Modal Sign Up -->
-	<div id="modal2" class="modal">
-		<div class="modal-content">
-			<jsp:include page="forms/form_add_user.jsp" />
+	<!-- -------------------------------------------------------------------------------- -->
+	<div class="row">
+		<div class="col s6">
+		
+		</div>
+		<div class="col s6">
+			<div id="login" class="container">
+				<div class="branco borda-r">
+					<jsp:include page="forms/form_login.jsp" />
+				</div>
+			</div>
+			<div id="sign" class="container">
+				<div class="branco borda-r">
+					<jsp:include page="forms/form_add_user.jsp" />
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- -------------------------------------------------------------------------------- -->

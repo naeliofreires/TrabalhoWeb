@@ -6,15 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Materialize -->
-<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet" type="text/css" />
 <!-- Icones -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- CSS -->
-<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"
-	type="text/css" />
-<title> Lista de Series</title>
+<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"	type="text/css" />
+<title>Minhas Series</title>
 </head>
 <body>
 
@@ -25,10 +22,7 @@
 			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
-						class="material-icons">menu</i></a></li>
-				<li>
-					<a id="add_series" href="#" >Add Series</a>
-					<a id="lista_series" href="#" >Lista de Series</a>
+						class="material-icons">menu</i></a>
 				</li>
 			</ul>
 		</div>
@@ -36,6 +30,7 @@
 	
 	<br>
 	
+	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -44,9 +39,7 @@
 					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
 
-				<br>
-				<br>
-				<br>
+				<br><br>
 				
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
 					<span style="padding-left: 30px;"></span> ${usuario.login}
@@ -58,45 +51,47 @@
 
 		<li><div class="divider"></div></li>
 
-		<li><a href="listaUsuarios"><i class="material-icons"> store
+		<li><a href="homeUsuario"><i class="material-icons"> store
 			</i> Home </a></li>
 			
-		<li><div class="divider"></div></li>
+		<li><a href="#"><i class="material-icons">account_circle
+			</i> Meu Perfil </a></li>
 
+		<li><div class="divider"></div></li>
+		
+		<li><a href="#"><i class="material-icons">new_releases
+			</i> Sobre Nós</a></li>
+			
 		<li><a href="logout" class="waves-effect"> <i
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
 	
+	<!-- Lista de Series -->
 	<!-- -------------------------------------------------------------------------------- -->
-		
-	<div id="listagem_series_adm" class="row container">
-		<c:forEach var="serie" items="${lista_series}">
-		<div class="col s3 ">
-			<div class="card">
-				<div class="card-image">
-					<img width="100" height="200" src="resources/img/noticias/${serie.path}"> 
-				</div>
-				<div class="card-content">
-					<span class="card-title">${serie.nome}</span>
-					<label>Genero: ${serie.genero}</label> <br> 
-					<label>Ano de Lançamento: ${serie.ano}</label>
-				</div>
-				<div class="card-action">
-					<a href="viewSerie?id=${serie.id}">View more</a>
+	<div class="container borda-r-b"> <br>
+		<c:forEach var="s" items="${series}">
+			<div class="container ">
+				<div class="row branco borda-r">
+					<div class="col s4">
+						<figure class="yfigure">
+							<img width="100" height="100"
+								src="resources/img/noticias/${s.path}">
+						</figure>
+					</div>
+					<div class="col s6">
+						<h6>Titulo: <label>${s.nome}</label> </h6>
+						<h6>Diretor: <label>${s.diretor}</label></h6>
+						<h6>Origem: <label>${s.origem}</label></h6>
+						
+						<a href="viewSerie?id=${s.id}">look</a>
+						<a href="removeSerieMyList?ids=${s.id}" >remover</a>
+						
+					</div>
 				</div>
 			</div>
-		</div>
 		</c:forEach>
 	</div>
-	
-	<!-- -------------------------------------------------------------------------------- -->
-	
-	<!-- Formulario Adicionar Serie -->
-	<div id="form_add_serie" class="container">
-		<jsp:include page="../forms/form_add_serie.jsp" />
-	</div>
-	
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>

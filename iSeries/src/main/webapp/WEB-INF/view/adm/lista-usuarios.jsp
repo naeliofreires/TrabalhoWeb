@@ -14,10 +14,12 @@
 <!-- CSS -->
 <link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"
 	type="text/css" />
-<title> Lista de Usuarios - ${usuario_logado.login}</title>
+<title> Lista de Usuarios</title>
 </head>
 <body>
 
+	<!-- Cabeçario -->
+	<!-- -------------------------------------------------------------------------------- -->
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo right">iSeries</a>
@@ -30,6 +32,7 @@
 
 	<hr> <br>
 		
+	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -63,6 +66,8 @@
 				class="material-icons"> exit_to_app </i> Sair
 		</a></li>
 	</ul>
+	
+	<!-- Lista de Usuario -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<div class="container">
 

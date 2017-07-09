@@ -1,17 +1,18 @@
 package iseries.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity(name="usuarios")
@@ -29,25 +30,43 @@ public class Usuario {
 	private String senha;
 	@NotNull 
 	private boolean admin;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "USUARIO_SERIE", 
-		joinColumns = { @JoinColumn(name = "ID_USUARIO", referencedColumnName="ID_USUARIO")}, 
-		inverseJoinColumns = { @JoinColumn(name = "ID_SERIE",  referencedColumnName="ID_SERIE") })
+	joinColumns = { @JoinColumn(name = "ID_USUARIO", referencedColumnName="ID_USUARIO")}, 
+	inverseJoinColumns = { @JoinColumn(name = "ID_SERIE",  referencedColumnName="ID_SERIE") })
 	private Collection<Serie> minhas_series;
+
+	@OneToMany(mappedBy="usuario", 
+			targetEntity=Comentario.class,
+			fetch=FetchType.LAZY,
+			cascade=CascadeType.ALL
+			)
+	private Collection<Comentario> comentarios;
 	
 	public Usuario() { }
-	
+
 	public Usuario(int id){
 		this.id = id;
 	}
-	
+
 	public Usuario(Integer id, String login, String email, String senha, boolean admin) {
 		this.id = id;
 		this.login = login;
 		this.email = email;
 		this.senha = senha;
 		this.admin = admin;
+	}
+
+	public Usuario(Integer id, String login, String email, String senha, boolean admin,
+			Collection<Serie> minhas_series) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.email = email;
+		this.senha = senha;
+		this.admin = admin;
+		this.minhas_series = minhas_series;
 	}
 
 	public Integer getId() {

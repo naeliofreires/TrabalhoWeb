@@ -35,21 +35,27 @@ public class Serie {
 	private String ano;
 	@Column(name="PATH")
 	private String path;
-	
+
 	@ManyToMany(mappedBy="minhas_series",  fetch=FetchType.LAZY)
 	private Collection<Usuario> usuarios;
-	
+
 	@OneToMany
-	(mappedBy = "serie", targetEntity = Temporada.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	(mappedBy = "serie", targetEntity = Temporada.class, fetch = FetchType.LAZY, 
+	cascade = CascadeType.ALL)
 	private List<Temporada> temporadas;
-	 
+
+	@OneToMany
+	(mappedBy="serie", targetEntity=Comentario.class,	fetch=FetchType.LAZY,
+	cascade=CascadeType.ALL)
+	private Collection<Comentario> comentarios;
+
 	public Serie() {}
 
 	public Serie(Integer id) {
 		super();
 		this.id = id;
 	}
-	
+
 	public Serie(Integer id, String nome, String diretor, String origem, String genero, String sinopse, String ano,
 			String path, List<Temporada> temporadas) {
 		super();
@@ -62,6 +68,14 @@ public class Serie {
 		this.ano = ano;
 		this.path = path;
 		this.temporadas = temporadas;
+	}
+
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public Integer getId() {

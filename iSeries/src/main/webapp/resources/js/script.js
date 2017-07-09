@@ -19,9 +19,22 @@ $('.carousel').carousel('next', 3); // Move next n times.
 //Iniciando Select
 $('select').material_select();
 
+//Animação Index
 //***************************************************************************//
+$('#sign').hide(); // Formulário de Cadastro
 
-// Tela de Listar Series
+$('#sign-up').click(()=>{
+	$('#sign').toggle(1000);
+	$('#login').toggle(1000);
+});
+
+$('#loginActive').click(()=>{
+	$('#sign').toggle(1000);
+	$('#login').toggle(1000);
+});
+
+//Tela de Listar Series
+//***************************************************************************//
 $('#form_add_serie').hide(); // Ocultando formulario de add Serie
 $("#lista_series").hide(); // Ocultando lista de Series
 

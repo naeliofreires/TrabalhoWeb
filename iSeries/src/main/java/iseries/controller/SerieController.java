@@ -45,7 +45,7 @@ public class SerieController {
 		}
 		
 		serieRepo.save(serie);
-		return "redirect:listaSeries";
+		return "redirect:homeUsuario";
 	}
 	
 	@RequestMapping(value = "updateSerie", method = RequestMethod.POST)
@@ -69,8 +69,21 @@ public class SerieController {
 		return "/user/visualizar-serie";
 	}
 	
+	// Usado p/ Visualização Normal...
 	@RequestMapping(value = "viewSerie", method = RequestMethod.GET)
-	String viewSerie(HttpSession session, Model model, @RequestParam(value="id", required=false) Integer id){
+	String viewSerie(HttpSession session, Serie serie, Model model){
+
+		ArrayList<Temporada> temporadas = (ArrayList<Temporada>) tempRepo.findTemporadaOfSerie(serie.getId());
+		
+		model.addAttribute("serie", serieRepo.findOne(serie.getId()));
+		model.addAttribute("temporadas", temporadas);
+		
+		return "/user/visualizar-serie";
+	}
+	
+	//Usando p/ Quando add/del Temporada...
+	@RequestMapping(value = "viewSerieII", method = RequestMethod.GET)
+	String viewSerieII(HttpSession session, Model model, @RequestParam(value="id", required=false) Integer id){
 		
 		if(session.getAttribute("idx") != null)
 			id = (Integer) session.getAttribute("idx");
@@ -81,17 +94,6 @@ public class SerieController {
 		model.addAttribute("temporadas", temporadas);
 		
 		return "/user/visualizar-serie";
-	}
-	
-	@RequestMapping("listaSeries")
-	String listarSeries(Model model){
-		
-		List<Serie> series = serieRepo.findAll();
-		
-		model.addAttribute("lista_series", series);
-		
-		
-		return "/adm/lista-series";
 	}
 
 }

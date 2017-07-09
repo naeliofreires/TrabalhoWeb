@@ -22,11 +22,12 @@ public class TemporadaController {
 	String addTemporada(Temporada temporada, HttpSession session, @RequestParam(value="serie", required=true) Integer id_serie){
 		
 		temporada.setSerie(new Serie(id_serie));
+		
 		tempRepo.save(temporada);
 		
 		session.setAttribute("idx", id_serie);
 		
-		return "redirect:viewSerie";
+		return "redirect:viewSerieII";
 	}
 	
 	@RequestMapping(value = "deleteTemp")
@@ -35,7 +36,7 @@ public class TemporadaController {
 		tempRepo.delete(id_temporada);
 		session.setAttribute("idx", id_serie);
 		
-		return "redirect:viewSerie";
+		return "redirect:viewSerieII";
 	}
 
 }
