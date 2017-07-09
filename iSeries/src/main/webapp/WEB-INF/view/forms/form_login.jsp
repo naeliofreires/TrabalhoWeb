@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col s6">
 				<div class="input-field">
-					<button id="button-login" class="btn waves-effect waves-light">Login</button>
+					<button id="button-login" class="btn waves-effect waves-light" disabled="disabled">Login</button>
 				</div>
 			</div>
 			<div class="col s6">

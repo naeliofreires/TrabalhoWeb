@@ -18,6 +18,8 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<!-- -------------------------------------------------------------------------------- -->
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo right">

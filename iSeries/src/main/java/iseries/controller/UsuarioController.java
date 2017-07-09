@@ -2,7 +2,6 @@ package iseries.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -32,7 +31,13 @@ public class UsuarioController {
 		userRepo.save(usuario);
 		return "redirect:/";
 	}
-
+	
+	@RequestMapping("myProfile")
+	String myProfile(){
+		return "/user/Profile";
+		
+	}
+	
 	// Adicionando Serie Na Lista Pessoal
 	@RequestMapping(value = "addInMyList", method = RequestMethod.GET)
 	String addMyList(@RequestParam(value="idUser", required=true) Integer id_user, 
@@ -62,9 +67,10 @@ public class UsuarioController {
 	String lookMySeries(HttpSession session, Model model){
 		
 		Usuario user = (Usuario) session.getAttribute("usuario");
+		
 		user = this.userRepo.findOne(user.getId());
 		
-		model.addAttribute("series", user.getMinhas_series());
+		model.addAttribute("usuario", user);
 		
 		return "/user/minhas-series";
 	}

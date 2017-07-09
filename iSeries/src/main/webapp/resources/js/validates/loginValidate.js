@@ -1,9 +1,9 @@
+$(document).keyup(function(e) {
 
-function verificar(){
-	if($("#login").val() === "" || $("#senha").val() === ""){
-		alert("Insira seus dados, campo vázio presente!");
+	if(!($("#login").val() === "" && $("#senha").val() === "")){
+		$("#button-login").removeAttr('disabled');
 	}else{
-		$("#btnSalvar").removeAttr('disabled');
+		$("#button-login").attr('disabled', 'disabled');
 	}
-	
-}
+});
+

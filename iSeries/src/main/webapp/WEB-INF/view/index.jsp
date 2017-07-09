@@ -60,6 +60,8 @@
 	<!-- Validates -->
 	<script type="text/javascript"
 		src="<c:url value="resources/js/validates/loginValidate.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/validates/cadastroValidate.js"/>"></script>
 
 </body>
 </html>

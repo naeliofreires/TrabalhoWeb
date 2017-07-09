@@ -6,15 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Materialize -->
-<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet" type="text/css" />
+<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet"
+	type="text/css" />
 <!-- Icones -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <!-- CSS -->
-<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"	type="text/css" />
-<title>Minhas Series</title>
+<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"
+	type="text/css" />
+<title> Profile </title>
 </head>
 <body>
 
+	<!-- Header -->
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo right">
@@ -22,8 +26,7 @@
 			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
-						class="material-icons">menu</i></a>
-				</li>
+						class="material-icons">menu</i></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -39,7 +42,9 @@
 					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
 
-				<br><br>
+				<br>
+				<br>
+				<br>
 				
 				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
 					<span style="padding-left: 30px;"></span> ${usuario.login}
@@ -53,45 +58,57 @@
 
 		<li><a href="homeUsuario"><i class="material-icons"> store
 			</i> Home </a></li>
-			
-		<li><a href="#"><i class="material-icons">account_circle
-			</i> Meu Perfil </a></li>
-
+		<c:if test="${usuario.admin == false}">
+			<li><a href="myProfile"><i class="material-icons"> store
+				</i> My Profile </a></li>
+			<li><a href="mySeries"><i class="material-icons"> store
+				</i> My Series </a></li>
+		</c:if>
+		<c:if test="${usuario.admin == true}">
+			<li><a href="listOfUsers"><i class="material-icons"> store
+				</i> List Of Users </a></li>s
+		</c:if>
 		<li><div class="divider"></div></li>
 		
-		<li><a href="#"><i class="material-icons">new_releases
-			</i> Sobre Nós</a></li>
-			
+		<li><a href="about" class="waves-effect"> <i
+				class="material-icons"> exit_to_app </i> About Us
+		</a></li>
+		
 		<li><a href="logout" class="waves-effect"> <i
-				class="material-icons"> exit_to_app </i> Sair
+				class="material-icons"> exit_to_app </i> Exit
 		</a></li>
 	</ul>
 	
-	<!-- Lista de Series -->
 	<!-- -------------------------------------------------------------------------------- -->
-	<div class="container borda-r-b"> <br>
-		<c:forEach var="s" items="${usuario.minhas_series}">
-			<div class="container ">
-				<div class="row branco borda-r">
-					<div class="col s4">
-						<figure class="yfigure">
-							<img width="100" height="100"
-								src="resources/img/noticias/${s.path}">
-						</figure>
+	
+	<div class="container">
+		<div class="container">
+			<div class="branco borda-r">
+				<div class="row">
+					<div class=" col s4">
+						<div>
+							<figure class="figure-profile">
+								<img class="responsive-img borda-r" width="150" height="150" src="<c:url value="/img/cinema.jpg"/>" />
+								<fieldset><a href="">alterar imagem</a></fieldset>
+							</figure>
+						</div>
 					</div>
 					<div class="col s6">
-						<h6>Titulo: <label>${s.nome}</label> </h6>
-						<h6>Diretor: <label>${s.diretor}</label></h6>
-						<h6>Origem: <label>${s.origem}</label></h6>
-						
-						<a href="viewSerie?id=${s.id}">look</a>
-						<a href="removeSerieMyList?ids=${s.id}" >remover</a>
-						
+						<br>
+						<h6>Nome/Login <label>${usuario.login}</label></h6>
+						<hr>
+						<h6>Email <label>${usuario.email}</label> </h6>
+						<hr>
+						<h6>Administrador: <label>${usuario.admin}</label> </h6>
+						<hr>
+						<br>
+						<button class="btn right">edit</button>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+		</div>
 	</div>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>
