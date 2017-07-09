@@ -52,10 +52,14 @@
 	</div>
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
-	
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>
-		
 	<script type="text/javascript" src="<c:url value="resources/js/script.js"/>"></script>
+	<!-- Controllers -->
+	<script type="text/javascript"
+		src="<c:url value="resources/js/controllers/materializeController.js"/>"></script>
+	<!-- Validates -->
+	<script type="text/javascript"
+		src="<c:url value="resources/js/validates/loginValidate.js"/>"></script>
 
 </body>
 </html>

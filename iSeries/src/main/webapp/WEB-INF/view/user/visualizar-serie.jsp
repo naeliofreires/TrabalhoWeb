@@ -1,36 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Materialize -->
-<link href="<c:url value='resources/css/materialize.min.css' />" rel="stylesheet" type="text/css" />
+<link href="<c:url value='resources/css/materialize.min.css' />"
+	rel="stylesheet" type="text/css" />
 <!-- Icones -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <!-- CSS -->
-<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet" type="text/css" />
+<link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"
+	type="text/css" />
 <title>${serie.nome}</title>
 </head>
 <body>
-	
+
 	<!-- Cabeçario -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">
-				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
+			<a href="#" class="brand-logo right"> <img width="50" height="50"
+				src="img/logo.png" alt="logo do site" class="responsive-img">
 			</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="#" id="ativa_side_nav" data-activates="slide-out"><i
 						class="material-icons">menu</i></a></li>
 			</ul>
 		</div>
-	</nav> <br>
-	
+	</nav>
+	<br>
+
 	<!-- Menu -->
-		<!-- -------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
 		<li>
 			<div class="userView">
@@ -38,12 +43,9 @@
 					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
 
-				<br>
-				<br>
-				<br>
-				
-				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario.login}
+				<br> <br> <br> <br> <a href="#!name"> <i
+					class="material-icons">perm_identity</i> <span
+					style="padding-left: 30px;"></span> ${usuario.login}
 				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
 					<span style="padding-left: 30px;"></span> ${usuario.email}
 				</a>
@@ -52,8 +54,8 @@
 
 		<li><div class="divider"></div></li>
 
-		<li><a href="homeUsuario"><i class="material-icons"> store
-			</i> Home </a></li>
+		<li><a href="homeUsuario"><i class="material-icons">
+					store </i> Home </a></li>
 		<c:if test="${usuario.admin == false}">
 			<li><a href="myProfile"><i class="material-icons"> store
 				</i> My Profile </a></li>
@@ -61,58 +63,61 @@
 				</i> My Series </a></li>
 		</c:if>
 		<c:if test="${usuario.admin == true}">
-			<li><a href="listOfUsers"><i class="material-icons"> store
-				</i> List Of Users </a></li>s
+			<li><a href="listOfUsers"><i class="material-icons">
+						store </i> List Of Users </a></li>s
 		</c:if>
 		<li><div class="divider"></div></li>
-		
+
 		<li><a href="about" class="waves-effect"> <i
 				class="material-icons"> exit_to_app </i> About Us
 		</a></li>
-		
+
 		<li><a href="logout" class="waves-effect"> <i
 				class="material-icons"> exit_to_app </i> Exit
 		</a></li>
 	</ul>
-	
+
 	<!-- -------------------------------------------------------------------------------- -->
-	
+
 	<!-- Serie -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<div id="dados_serie" class="container">
-		
+
 		<div class="row">
-		
+
 			<div class="col s4">
 				<figure class="branco xfigure">
-					<img width="200" height="250" src="resources/img/noticias/${serie.path}"> 
+					<img width="200" height="250"
+						src="resources/img/noticias/${serie.path}">
 				</figure>
 			</div>
-			
-			<div class="col s8 sinopse" >
+
+			<div class="col s8 sinopse">
 				<p>${serie.sinopse}</p>
 			</div>
 
-			<br><hr><br>
+			<br>
+			<hr>
+			<br>
 
-			<div  class="col s4  informacoes">
+			<div class="col s4  informacoes">
 				<div class="container cinza">
-				<h5 style="text-align: center;">Informações</h5>
-				<h6>
-					Título Original: <label>${serie.nome}</label>
-				</h6>
-				<h6>
-					Diretor: <label>${serie.diretor}</label>
-				</h6>
-				<h6>
-					Gênero:  <label>${serie.genero}</label>
-				</h6>
-				<h6>
-					Ano de Lançamento: <label>${serie.ano}</label>
-				</h6>
-				<h6>
-					Origem: <label>${serie.origem}</label>
-				</h6>
+					<h5 style="text-align: center;">Informações</h5>
+					<h6>
+						Título Original: <label>${serie.nome}</label>
+					</h6>
+					<h6>
+						Diretor: <label>${serie.diretor}</label>
+					</h6>
+					<h6>
+						Gênero: <label>${serie.genero}</label>
+					</h6>
+					<h6>
+						Ano de Lançamento: <label>${serie.ano}</label>
+					</h6>
+					<h6>
+						Origem: <label>${serie.origem}</label>
+					</h6>
 
 					<a href="homeUsuario" class="waves-effect waves-teal btn-flat left">
 						<i class="material-icons">reply</i>
@@ -136,7 +141,7 @@
 
 				</div>
 			</div>
-			
+
 			<!-- 		Lista de Temporadas 		-->
 			<div class="col s8">
 				<c:if test="${usuario.admin == true}">
@@ -152,38 +157,32 @@
 							<th></th>
 							<th></th>
 							<c:if test="${usuario.admin == true}">
-								<th id="ativar-form-add-temporada">
-									<a href="#">
-										<i class="material-icons">add</i>
-									</a>
-								</th>
-								<th id="ocultar-form-add-temporada">
-									<a href="#" >
-										<i class="material-icons">keyboard_arrow_up</i>
-									</a>
-								</th>
+								<th id="ativar-form-add-temporada"><a href="#"> <i
+										class="material-icons">add</i>
+								</a></th>
+								<th id="ocultar-form-add-temporada"><a href="#"> <i
+										class="material-icons">keyboard_arrow_up</i>
+								</a></th>
 							</c:if>
-							
+
 						</tr>
 					</thead>
 
 					<tbody>
-						<c:forEach var="t" items="${temporadas}">
+						<c:forEach var="t" items="${serie.temporadas}">
 							<tr>
 								<td>${t.numero}</td>
 								<td>${t.duracao}</td>
 								<c:if test="${usuario.admin == true}">
 									<td>
 										<h6 class="center">
-											<a href="#" id="addEpisodio">
-												<i class="material-icons">add</i>
+											<a href="#" id="addEpisodio"> <i class="material-icons">add</i>
 											</a>
 										</h6>
 									</td>
 									<td>
 										<h6 class="center">
-											<a href="#" id="editTemporada">
-												<i class="material-icons">edit</i>
+											<a href="#" id="editTemporada"> <i class="material-icons">edit</i>
 											</a>
 										</h6>
 									</td>
@@ -200,41 +199,80 @@
 					</tbody>
 				</table>
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 	<!-- Comentários -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<div class="container">
 		<hr>
-		<h6 class="texto-centro">Comentários</h6>
+		<h5 class="texto-centro">Comentários</h5>
 		<hr>
+		
+		<div id="comentarios" align="left"	style="height: 250px; overflow: scroll;">
+			
+			<c:forEach var="comentario" items="${serie.comentarios}">
+				<blockquote	style="margin: 20px 0; padding-left: 1.5rem; border-left: 5px solid #4a148c;">
+					<h6>${comentario.texto}</h6>
+					<p>- ${comentario.usuario.login}, <fmt:formatDate value="${comentario.data.time}" type="date" dateStyle="short" /></p>
+					<c:if test="${usuario.id == comentario.id_usuario }">
+					<button id="deleteComentario">delete</button>
+					</c:if><hr>
+				</blockquote>
+			</c:forEach>
+			<a href="#" id="end"></a>
+			
+		</div>
+		
+		<div class="container">
+			<c:if test="${not empty usuario }">
+					<div id="registrarComentario">
+						<input type="hidden" id="serie" name="serie" value="${serie.id}" />
+						<input type="hidden" id="user" name="user" value="${usuario.id}" />
+						<div class="input-field col m8">
+						<i class="material-icons prefix">comment</i>
+						<input type="text" id="texto"/>
+						<label for="icon_telephone">Seu comentário</label>
+						</div>
+						<button class="btn" id="comentar">Enviar</button>
+					</div>
+			</c:if>
+		</div>
+
 	</div>
 	<!-- -------------------------------------------------------------------------------- -->
-	
+
 	<!-- Formulários -->
 	<!-- -------------------------------------------------------------------------------- -->
-	<c:if test = "${usuario.admin == true}">
+	<c:if test="${usuario.admin == true}">
 		<div id="form_update_serie" class="container">
-			
+
 			<div>
 				<h6 id="dados_serie2" class="center">
-					<a href="#">
-						<i class="material-icons">keyboard_arrow_down</i>
+					<a href="#"> <i class="material-icons">keyboard_arrow_down</i>
 					</a>
 				</h6>
 			</div>
-			
+
 			<jsp:include page="../forms/form_update_serie.jsp" />
-			
+
 		</div>
 	</c:if>
-	<!-- -------------------------------------------------------------------------------- -->
 	
-	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="resources/js/script.js"/>"></script>
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<script type="text/javascript"
+		src="<c:url value="resources/js/jquery.min.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/materialize.min.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/script.js"/>"></script>
+	<!-- Controllers -->
+	<script type="text/javascript"
+		src="<c:url value="resources/js/controllers/materializeController.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/controllers/comentarioController.js"/>"></script>
 
 </body>
 </html>

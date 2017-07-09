@@ -37,11 +37,8 @@ public class Usuario {
 	inverseJoinColumns = { @JoinColumn(name = "ID_SERIE",  referencedColumnName="ID_SERIE") })
 	private Collection<Serie> minhas_series;
 
-	@OneToMany(mappedBy="usuario", 
-			targetEntity=Comentario.class,
-			fetch=FetchType.LAZY,
-			cascade=CascadeType.ALL
-			)
+	@OneToMany
+	(mappedBy="usuario", targetEntity=Comentario.class, fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Collection<Comentario> comentarios;
 	
 	public Usuario() { }

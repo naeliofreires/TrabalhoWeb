@@ -149,4 +149,13 @@ public class Serie {
 	public void setTemporadas(List<Temporada> temporadas) {
 		this.temporadas = temporadas;
 	}
+
+	public Collection<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(Collection<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
 }
