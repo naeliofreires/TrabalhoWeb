@@ -53,6 +53,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="static/footer.jsp" />
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>

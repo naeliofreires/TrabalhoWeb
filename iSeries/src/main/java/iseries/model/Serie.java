@@ -40,6 +40,7 @@ public class Serie {
 	@NotNull
 	@Size(min = 4, max = 4, message="Deve ser apenas o ano exato... Ex: 2017")
 	private String ano;
+	
 	@Column(name="PATH")
 	private String path;
 

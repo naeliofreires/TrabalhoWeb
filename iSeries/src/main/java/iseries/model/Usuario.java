@@ -25,18 +25,21 @@ public class Usuario {
 	private Integer id;
 	
 	@NotNull 
-	@Size(min = 5, max = 10, message="O tamanho deve ser entre {min} e {max}")
+	@Size(max = 25, message="O tamanho deve ser entre {min} e {max}")
 	private String login;
 	
 	@NotNull 
 	private String email;
 	
 	@NotNull 
-	@Size(min = 5, max = 10, message="O tamanho deve ser entre {min} e {max}")
+	@Size(max = 10, message="O tamanho deve ser entre {min} e {max}")
 	private String senha;
 	
 	@NotNull 
 	private boolean admin;
+	
+	@Column(name="PATH")
+	private String path;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "USUARIO_SERIE", 
@@ -121,4 +124,19 @@ public class Usuario {
 		this.minhas_series = minhas_series;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public Collection<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(Collection<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
 }

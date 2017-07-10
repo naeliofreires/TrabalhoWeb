@@ -45,15 +45,11 @@
 		<li>
 			<div class="userView">
 				<div class="background">
-					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
+					<img  height="500" class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
-
-				<br> <br> <br> <br> <a href="#!name"> <i
-					class="material-icons">perm_identity</i> <span
-					style="padding-left: 30px;"></span> ${usuario.login}
-				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario.email}
-				</a>
+			
+				<a href="#!user"><img width="120" height="130"  class="circle" src="resources/img/usuarios/${usuario.path}"></a>
+				<a href="#!name"><span class="white-text name">${usuario.login}</span></a>
 			</div>
 		</li>
 
@@ -91,8 +87,7 @@
 
 			<div class="col s4">
 				<figure class="branco xfigure">
-					<img width="200" height="250"
-						src="resources/img/noticias/${serie.path}">
+					<img width="200" height="250" src="resources/img/noticias/${serie.path}">
 				</figure>
 			</div>
 
@@ -246,7 +241,9 @@
 		</div>
 
 	</div>
+	<br><br><br><br>
 	</c:if>
+	
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<!-- Formulários -->
@@ -266,6 +263,7 @@
 		</div>
 	</c:if>
 	
+	<jsp:include page="../static/footer.jsp" />
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<script type="text/javascript"

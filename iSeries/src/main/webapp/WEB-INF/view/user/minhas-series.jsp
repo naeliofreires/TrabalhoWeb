@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- CSS -->
 <link href="<c:url value='resources/css/estilo.css' />" rel="stylesheet"	type="text/css" />
+<link href="<c:url value='resources/css/cssMySeries.css' />" rel="stylesheet"	type="text/css" />
 <title>Minhas Series</title>
 </head>
 <body>
@@ -41,36 +42,38 @@
 		<li>
 			<div class="userView">
 				<div class="background">
-					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
+					<img  height="500" class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
-
-				<br><br>
-				
-				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario.login}
-				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario.email}
-				</a>
+			
+				<a href="#!user"><img width="120" height="130"  class="circle" src="resources/img/usuarios/${usuario.path}"></a>
+				<a href="#!name"><span class="white-text name">${usuario.login}</span></a>
 			</div>
 		</li>
 
 		<li><div class="divider"></div></li>
 
-		<li><a href="homeUsuario"><i class="material-icons"> store
-			</i> Home </a></li>
-			
-		<li><a href="myProfile"><i class="material-icons">account_circle
-			</i> Meu Perfil </a></li>
-
-		<li><div class="divider"></div></li>
+		<li><a href="homeUsuario"><i class="material-icons">
+					store </i> Home </a></li>
+		<c:if test="${usuario.admin == false}">
+			<li><a href="myProfile"><i class="material-icons">account_circle</i> My Profile </a></li>
+			<li><a href="mySeries"><i class="material-icons"> movie </i> My Series </a></li>
+		</c:if>
 		
-		<li><a href="AboutUs"><i class="material-icons">new_releases
-			</i> Sobre Nós</a></li>
-			
+		<c:if test="${usuario.admin == true}">
+			<li><a href="listOfUsers"><i class="material-icons">store </i> List Of Users </a></li>
+		</c:if>
+		
+		<li><div class="divider"></div></li>
+
+		<li><a href="about" class="waves-effect"> <i
+				class="material-icons"> exit_to_app </i> About Us
+		</a></li>
+
 		<li><a href="logout" class="waves-effect"> <i
-				class="material-icons"> exit_to_app </i> Sair
+				class="material-icons"> exit_to_app </i> Exit
 		</a></li>
 	</ul>
+	<!-- -------------------------------------------------------------------------------- -->
 	
 	<!-- Lista de Series -->
 	<!-- -------------------------------------------------------------------------------- -->
@@ -89,14 +92,16 @@
 						<h6>Diretor: <label>${s.diretor}</label></h6>
 						<h6>Origem: <label>${s.origem}</label></h6>
 						
-						<a href="viewSerie?id=${s.id}">look</a>
-						<a href="removeSerieMyList?ids=${s.id}" >remover</a>
+						<a href="viewSerie?id=${s.id}"><i class="material-icons">visibility</i></a>
+						<a href="removeSerieMyList?ids=${s.id}" ><i class="material-icons">delete</i></a>
 						
 					</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
+	
+	<jsp:include page="../static/footer.jsp" />
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>

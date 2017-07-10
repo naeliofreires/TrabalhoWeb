@@ -74,5 +74,12 @@ $("#ocultar-form-add-temporada").click(()=>{
 	$("#ocultar-form-add-temporada").hide(); // THIS
 })
 
-//***************************************************************************//
+
+
+
+
+
+
+
+
 

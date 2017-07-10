@@ -51,42 +51,37 @@
 		<li>
 			<div class="userView">
 				<div class="background">
-					<img class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
+					<img  height="500" class="responsive-img" src="<c:url value="/img/cinema.jpg"/>" />
 				</div>
-
-				<br>
-				<br>
-				<br>
-				
-				<br> <a href="#!name"> <i class="material-icons">perm_identity</i>
-					<span style="padding-left: 30px;"></span> ${usuario.login}
-				</a> <br> <a href="#!email"> <i class="material-icons">email</i>
-					<span style="padding-left: 30px;"></span> ${usuario.email}
-				</a>
+			
+				<a href="#!user"><img width="120" height="130"  class="circle" src="resources/img/usuarios/${usuario.path}"></a>
+				<a href="#!name"><span class="white-text name">${usuario.login}</span></a>
 			</div>
 		</li>
 
 		<li><div class="divider"></div></li>
 
-		<li><a href="homeUsuario"><i class="material-icons"> store
-			</i> Home </a></li>
-		
+		<li><a href="homeUsuario"><i class="material-icons">
+					store </i> Home </a></li>
 		<c:if test="${usuario.admin == false}">
 			<li><a href="myProfile"><i class="material-icons">account_circle</i> My Profile </a></li>
 			<li><a href="mySeries"><i class="material-icons"> movie </i> My Series </a></li>
 		</c:if>
 		
 		<c:if test="${usuario.admin == true}">
-			<li><a href="listOfUsers"><i class="material-icons"> store</i> List Of Users </a></li>
+			<li><a href="listOfUsers"><i class="material-icons">store </i> List Of Users </a></li>
 		</c:if>
 		
 		<li><div class="divider"></div></li>
-		
-		<li><a href="about" class="waves-effect"> <i class="material-icons">new_releases</i> About Us</a></li>
-		
-		<li><a href="logout" class="waves-effect"> <i class="material-icons"> exit_to_app </i> Exit	</a></li>
+
+		<li><a href="about" class="waves-effect"> <i
+				class="material-icons"> exit_to_app </i> About Us
+		</a></li>
+
+		<li><a href="logout" class="waves-effect"> <i
+				class="material-icons"> exit_to_app </i> Exit
+		</a></li>
 	</ul>
-	
 	<!-- -------------------------------------------------------------------------------- -->
 		
 	<div id="listagem_series_adm" class="row container">
@@ -116,6 +111,7 @@
 		<jsp:include page="../forms/form_add_serie.jsp" />
 	</div>
 	
+	<jsp:include page="../static/footer.jsp" />
 	<!-- -------------------------------------------------------------------------------- -->
 	<script type="text/javascript" src="<c:url value="resources/js/jquery.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>

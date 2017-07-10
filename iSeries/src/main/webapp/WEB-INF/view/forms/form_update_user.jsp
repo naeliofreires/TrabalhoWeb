@@ -1,33 +1,29 @@
-<form action="efetuarCadastro" method="POST" class="container" enctype="multipart/form-data">
+<form action="updateUsuario" method="POST" class="container" enctype="multipart/form-data">
 
 	<p style="text-align: center">
 		<img src="img/logo.png" alt="" class="responsive-img">
 	</p>
 	
+	<input name="id" value="${usuario.id}" hidden="true" >
+	
 	<i class="material-icons">account_circle</i>
 	<div class="input-field">
-		<input id="login1" name="login" type="text" class="validate"> 
+		<input id="login1" name="login" type="text" class="validate" value="${usuario.login}"/> 
 		<label for="login1" class="center-align">Username</label>
 	</div>
 
 	<i class="material-icons">email</i>
 	<div class="input-field">
-		<input id="email1" name="email" type="email" class="validate"> 
+		<input id="email1" name="email" type="email" class="validate" value="${usuario.email}"/> 
 		<label	for="email1" class="center-align">Email</label>
 	</div>
 
 	<i class="material-icons">lock_outline</i>
 	<div class="input-field">
-		<input id="senha1" name="senha" type="password" class="validate"> 
-		<label	for="senha1" class="center-align">Password</label>
+		<input id="senha" name="senha" type="password" class="validate" value="${usuario.senha}" maxlength="10"> 
+		<label	for="senha" class="center-align">Password</label>
 	</div>
 
-	<i class="material-icons">lock_outline</i>
-	<div class="input-field">
-		<input id="senha2" name="senha2" type="password" class="validate"> 
-		<label for="senha2" class="center-align">Confirme seu Password</label>
-	</div>
-	
 	<label>Insira uma foto de Perfil</label>
 	<div  class="input-field">
 		<i class="tiny material-icons prefix">insert_photo</i>
