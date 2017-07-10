@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name="usuarios")
 public class Usuario {
@@ -22,12 +23,18 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_USUARIO", nullable=false)
 	private Integer id;
+	
 	@NotNull 
+	@Size(min = 5, max = 10, message="O tamanho deve ser entre {min} e {max}")
 	private String login;
+	
 	@NotNull 
 	private String email;
+	
 	@NotNull 
+	@Size(min = 5, max = 10, message="O tamanho deve ser entre {min} e {max}")
 	private String senha;
+	
 	@NotNull 
 	private boolean admin;
 

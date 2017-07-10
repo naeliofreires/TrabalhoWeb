@@ -21,22 +21,25 @@
 			<a href="#" class="brand-logo right">
 				<img width="50" height="50" src="img/logo.png" alt="logo do site" class="responsive-img">
 			</a>
-			<ul id="nav-mobile" class="left hide-on-med-and-down">
-				<li><a href="#modal2">Sign Up</a></li>
-			</ul>
 		</div>
 	</nav>
 
-	<br><br>
+	<br>
+	<div  id="msg" class="container texto-centro">
+		<h6 class="msgOK">${msgOk}</h6>
+		<h6 class="msgErro">${msgErro}</h6>
+	</div>
+	<br>
 	
-	<!-- slide -->
-	<!-- -------------------------------------------------------------------------------- -->
-	
-	<!-- -------------------------------------------------------------------------------- -->
-	<div class="row">
-		<div class="col s6">
-		
+	<div class="row container ">
+		<div class="col s6 container">
+			 <div>
+			 	<a>
+			 		<img width="400" height="450" src="resources/img/noticias/${serie.path}"> 
+			 	</a>
+  			</div>
 		</div>
+
 		<div class="col s6">
 			<div id="login" class="container">
 				<div class="branco borda-r">
@@ -55,13 +58,10 @@
 	<script type="text/javascript" src="<c:url value="resources/js/materialize.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="resources/js/script.js"/>"></script>
 	<!-- Controllers -->
-	<script type="text/javascript"
-		src="<c:url value="resources/js/controllers/materializeController.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/controllers/materializeController.js"/>"></script>
 	<!-- Validates -->
-	<script type="text/javascript"
-		src="<c:url value="resources/js/validates/loginValidate.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/validates/cadastroValidate.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/validates/loginValidate.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/validates/cadastroValidate.js"/>"></script>
 
 </body>
 </html>

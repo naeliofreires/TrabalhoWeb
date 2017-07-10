@@ -32,8 +32,13 @@
 			</ul>
 		</div>
 	</nav>
+	
 	<br>
-
+	<div  id="msg" class="container texto-centro">
+		<h6 class="msgOK">${msgOk}</h6>
+		<h6 class="msgErro">${msgErro}</h6>
+	</div>
+	<br>
 	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
 	<ul id="slide-out" class="side-nav">
@@ -57,15 +62,14 @@
 		<li><a href="homeUsuario"><i class="material-icons">
 					store </i> Home </a></li>
 		<c:if test="${usuario.admin == false}">
-			<li><a href="myProfile"><i class="material-icons"> store
-				</i> My Profile </a></li>
-			<li><a href="mySeries"><i class="material-icons"> store
-				</i> My Series </a></li>
+			<li><a href="myProfile"><i class="material-icons">account_circle</i> My Profile </a></li>
+			<li><a href="mySeries"><i class="material-icons"> movie </i> My Series </a></li>
 		</c:if>
+		
 		<c:if test="${usuario.admin == true}">
-			<li><a href="listOfUsers"><i class="material-icons">
-						store </i> List Of Users </a></li>s
+			<li><a href="listOfUsers"><i class="material-icons">store </i> List Of Users </a></li>
 		</c:if>
+		
 		<li><div class="divider"></div></li>
 
 		<li><a href="about" class="waves-effect"> <i
@@ -169,7 +173,7 @@
 					</thead>
 
 					<tbody>
-						<c:forEach var="t" items="${serie.temporadas}">
+						<c:forEach var="t" items="${temporadas}">
 							<tr>
 								<td>${t.numero}</td>
 								<td>${t.duracao}</td>
@@ -205,6 +209,7 @@
 
 	<!-- Comentários -->
 	<!-- -------------------------------------------------------------------------------- -->
+	<c:if test="${usuario.admin == false }">
 	<div class="container">
 		<hr>
 		<h5 class="texto-centro">Comentários</h5>
@@ -215,9 +220,9 @@
 			<c:forEach var="comentario" items="${serie.comentarios}">
 				<blockquote	style="margin: 20px 0; padding-left: 1.5rem; border-left: 5px solid #4a148c;">
 					<h6>${comentario.texto}</h6>
-					<p>- ${comentario.usuario.login}, <fmt:formatDate value="${comentario.data.time}" type="date" dateStyle="short" /></p>
+					<p>${comentario.usuario.login} [<fmt:formatDate value="${comentario.data.time}" type="date" dateStyle="short" />]</p>
 					<c:if test="${usuario.id == comentario.id_usuario }">
-					<button id="deleteComentario">delete</button>
+					<a id="deleteComentario" href="deletarComentario?id=${comentario.id}"><i class="material-icons">remove_circle_outline</i></a>
 					</c:if><hr>
 				</blockquote>
 			</c:forEach>
@@ -241,6 +246,7 @@
 		</div>
 
 	</div>
+	</c:if>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<!-- Formulários -->

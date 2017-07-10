@@ -13,6 +13,8 @@ $('#loginActive').click(()=>{
 	$('#login').toggle(1000);
 });
 
+$("#msg").fadeOut(3000);
+
 //Tela de Listar Series
 //***************************************************************************//
 $('#form_add_serie').hide(); // Ocultando formulario de add Serie

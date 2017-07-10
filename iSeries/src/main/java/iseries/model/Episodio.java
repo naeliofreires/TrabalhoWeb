@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name="episodios")
 public class Episodio {
@@ -15,6 +16,7 @@ public class Episodio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
+	@Size(min = 9, max = 20, message="O tamanho deve ser entre {min} e {max}")
 	private String titulo;
 
 	@ManyToOne

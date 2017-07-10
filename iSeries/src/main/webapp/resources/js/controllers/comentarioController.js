@@ -10,6 +10,15 @@ $(function(){
 			comentar($("#user").val(),$("#serie").val(),$("#texto").val());
 		}
 	});
+	
+	$("#deleteComentario").click(function(){
+		if(confirm("Tem certeza desta ação ?!")){
+			return true;
+		}else{
+			return false;
+		}
+	});
+	
 });
 
 //Função para Comentar com AJAX
@@ -33,10 +42,9 @@ function mostrarComentario(comentario){
 	var date = new Date(comentario.data)
 	
 	$("div[id=comentarios]").append("<blockquote style=\" margin: 20px 0; padding-left: 1.5rem; border-left: 5px solid #4a148c;\">" +
-			"<h6>"+comentario.texto+"</h6>"+
+			"<h6>"+comentario.texto + "</h6>"+
 			"<p>"+comentario.autor+", "+date.getDate()+"/"+(date.getMonth()+1)+"/"+(date.getYear()-100)+"</p>" +
 			"<c:if test=" + "${usuario.id == comentario.id_usuario }>" +
-			"<button id="+ "deleteComentario" + "> >delete</button>" +
 			"</c:if>" + "<hr>" +
 			"</blockquote>");
 	

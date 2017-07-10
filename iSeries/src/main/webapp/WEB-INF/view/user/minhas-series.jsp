@@ -29,6 +29,11 @@
 	</nav>
 	
 	<br>
+	<div  id="msg" class="container texto-centro">
+		<h6 class="msgOK">${msgOk}</h6>
+		<h6 class="msgErro">${msgErro}</h6>
+	</div>
+	<br>
 	
 	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
@@ -54,12 +59,12 @@
 		<li><a href="homeUsuario"><i class="material-icons"> store
 			</i> Home </a></li>
 			
-		<li><a href="#"><i class="material-icons">account_circle
+		<li><a href="myProfile"><i class="material-icons">account_circle
 			</i> Meu Perfil </a></li>
 
 		<li><div class="divider"></div></li>
 		
-		<li><a href="#"><i class="material-icons">new_releases
+		<li><a href="AboutUs"><i class="material-icons">new_releases
 			</i> Sobre Nós</a></li>
 			
 		<li><a href="logout" class="waves-effect"> <i

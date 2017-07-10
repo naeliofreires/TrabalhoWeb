@@ -39,6 +39,11 @@
 	</nav>
 	
 	<br>
+	<div  id="msg" class="container texto-centro">
+		<h6 class="msgOK">${msgOk}</h6>
+		<h6 class="msgErro">${msgErro}</h6>
+	</div>
+	<br>
 	
 	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
@@ -65,25 +70,21 @@
 
 		<li><a href="homeUsuario"><i class="material-icons"> store
 			</i> Home </a></li>
+		
 		<c:if test="${usuario.admin == false}">
-			<li><a href="myProfile"><i class="material-icons"> store
-				</i> My Profile </a></li>
-			<li><a href="mySeries"><i class="material-icons"> store
-				</i> My Series </a></li>
+			<li><a href="myProfile"><i class="material-icons">account_circle</i> My Profile </a></li>
+			<li><a href="mySeries"><i class="material-icons"> movie </i> My Series </a></li>
 		</c:if>
+		
 		<c:if test="${usuario.admin == true}">
-			<li><a href="listOfUsers"><i class="material-icons"> store
-				</i> List Of Users </a></li>s
+			<li><a href="listOfUsers"><i class="material-icons"> store</i> List Of Users </a></li>
 		</c:if>
+		
 		<li><div class="divider"></div></li>
 		
-		<li><a href="about" class="waves-effect"> <i
-				class="material-icons"> exit_to_app </i> About Us
-		</a></li>
+		<li><a href="about" class="waves-effect"> <i class="material-icons">new_releases</i> About Us</a></li>
 		
-		<li><a href="logout" class="waves-effect"> <i
-				class="material-icons"> exit_to_app </i> Exit
-		</a></li>
+		<li><a href="logout" class="waves-effect"> <i class="material-icons"> exit_to_app </i> Exit	</a></li>
 	</ul>
 	
 	<!-- -------------------------------------------------------------------------------- -->

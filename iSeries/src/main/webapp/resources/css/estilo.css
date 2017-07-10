@@ -73,6 +73,17 @@ nav{
 	float: left;
 }
 
+.texto-centro{
+	text-align: center;
+}
+
+.msgOK{
+	background: #54FF9F;
+}
+
+.msgErro{
+	background: #FF7256;
+}
 
 
 

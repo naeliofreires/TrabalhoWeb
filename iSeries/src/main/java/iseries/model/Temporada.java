@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name="temporadas")
 public class Temporada {
@@ -21,9 +22,11 @@ public class Temporada {
 	private Integer id;
 	
 	@NotNull
+	@Size(min = 9, max = 12, message="O tamanho deve ser entre {min} e {max}")
 	private String numero;
 	
 	@NotNull
+	@Size(min = 4, max = 15, message="O tamanho deve ser entre {min} e {max}")
 	private String duracao;
 	
 	@ManyToOne

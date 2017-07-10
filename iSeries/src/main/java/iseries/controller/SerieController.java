@@ -1,7 +1,6 @@
 package iseries.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,19 +9,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import iseries.model.Comentario;
 import iseries.model.Serie;
-import iseries.model.Temporada;
 import iseries.repository.ComentarioRepository;
 import iseries.repository.SerieRepository;
 import iseries.repository.TemporadaRepository;
@@ -49,7 +50,13 @@ public class SerieController {
 	
 	// Inserindo Serie
 	@RequestMapping(value = "cadastraSerie", method = RequestMethod.POST)
-	String cadastraSerie(Serie serie, @RequestParam(value="imagem", required=false) MultipartFile imagem) throws IOException{
+	String cadastraSerie(@Valid Serie serie, @RequestParam(value="imagem", required=false) MultipartFile imagem,
+			BindingResult result, Model model, RedirectAttributes redirectAttributes) throws IOException{
+		
+		if(result.hasErrors()){
+			redirectAttributes.addFlashAttribute("msgErro", "Erro ao Cadastrar Serie");
+			return "redirect:homeUsuario";
+		}
 		
 		if(imagem.getBytes().length != 0){
 			FileUtil.salvarImagem(servletContext.getRealPath("/")+"resources/img/noticias/"+serie.getNome()+".png", imagem);
@@ -58,13 +65,22 @@ public class SerieController {
 			serie.setPath("news.png");
 		}
 		
+		redirectAttributes.addFlashAttribute("msgOK", "Serie Cadastrada com Sucesso");
 		serieRepo.save(serie);
 		return "redirect:homeUsuario";
 	}
 	
 	// Atualizando Serie
 	@RequestMapping(value = "updateSerie", method = RequestMethod.POST)
-	String updateSerie(Serie serie, Model model, @RequestParam(value="imagem", required=false) MultipartFile imagem) throws IOException{
+	String updateSerie(@Valid Serie serie, Model model, @RequestParam(value="imagem", required=false) MultipartFile imagem,
+			BindingResult result, RedirectAttributes redirectAttributes) throws IOException{
+		
+		if(result.hasErrors()){
+			serie = serieRepo.findOne(serie.getId());
+			model.addAttribute("serie", serie);
+			redirectAttributes.addFlashAttribute("msgErro", "Erro ao Atualizar Serie");
+			return "/user/visualizar-serie";
+		}
 		
 		if(imagem.getBytes().length != 0){
 			FileUtil.salvarImagem(servletContext.getRealPath("/")+"resources/img/noticias/"+serie.getNome()+".png", imagem);
@@ -73,10 +89,12 @@ public class SerieController {
 			serie.setPath("news.png");
 		}
 		
+		redirectAttributes.addFlashAttribute("msgOk", "Serie atualizada com Sucesso");
+		
 		serieRepo.save(serie);
 		
-		serie = serieRepo.findOne(serie.getId());
-		model.addAttribute("serie", serie);
+		model.addAttribute("serie", this.serieRepo.getOne(serie.getId()));
+		model.addAttribute("temporadas", this.tempRepo.findTemporadaOfSerie(serie.getId()) );
 		
 		return "/user/visualizar-serie";
 	}
@@ -84,9 +102,10 @@ public class SerieController {
 	// Visualizando Serie
 	@RequestMapping(value = "viewSerie", method = RequestMethod.GET)
 	String viewSerie(HttpSession session, Serie serie, Model model){
-
-		serie = serieRepo.findOne(serie.getId());
-		model.addAttribute("serie", serie);
+		
+		model.addAttribute("serie", this.serieRepo.getOne(serie.getId()));
+		model.addAttribute("temporadas", this.tempRepo.findTemporadaOfSerie(serie.getId()) );
+		
 		return "/user/visualizar-serie";
 	}
 	
@@ -94,17 +113,19 @@ public class SerieController {
 	@RequestMapping(value = "viewSerieII", method = RequestMethod.GET)
 	String viewSerieII(HttpSession session, Model model, @RequestParam(value="id", required=false) Integer id){
 		
-		if(session.getAttribute("idx") != null)
+		if(session.getAttribute("idx") != null){
 			id = (Integer) session.getAttribute("idx");
+			session.setAttribute("idx", null);
+		}
 		
-		ArrayList<Temporada> temporadas = (ArrayList<Temporada>) tempRepo.findTemporadaOfSerie(id);
-		
-		model.addAttribute("serie", serieRepo.findOne(id));
-		model.addAttribute("temporadas", temporadas);
+		model.addAttribute("serie", this.serieRepo.getOne(id));
+		model.addAttribute("temporadas", this.tempRepo.findTemporadaOfSerie(id) );
 		
 		return "/user/visualizar-serie";
 	}
 
+	//Adicionando Comentario
+	@SuppressWarnings("deprecation")
 	@RequestMapping("/adicionarComentario")
 	@ResponseBody
 	public String adicionarComentario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -136,4 +157,32 @@ public class SerieController {
 		comentario = null;
 		return "";
 	}
+	
+	//Removendo Comentario
+	@RequestMapping(value = "deletarComentario", method = RequestMethod.GET)
+	String removerComentario(Comentario comentario, HttpSession session){
+		
+		comentario = this.comentRepo.findOne(comentario.getId());
+		
+		this.comentRepo.delete(comentario);
+		
+		session.setAttribute("idx", comentario.getId_serie());
+		
+		return "redirect:viewSerieII";
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -30,7 +30,12 @@
 		</div>
 	</nav>
 
-	<hr> <br>
+	<br>
+	<div  id="msg" class="container texto-centro">
+		<h6 class="msgOK">${msgOk}</h6>
+		<h6 class="msgErro">${msgErro}</h6>
+	</div>
+	<br>r>
 		
 	<!-- Menu -->
 	<!-- -------------------------------------------------------------------------------- -->
